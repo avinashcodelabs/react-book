@@ -1501,7 +1501,7 @@ Ex-2
 
 Shell commands also has this composable principle,
 
-```properties
+```console
 > ls | grep *.js
 ````
 
@@ -2471,7 +2471,7 @@ In real apps, we need transpiler, minify JS & CSS, bundling, bundle splitting et
 
 Install Node.js and npm - `https://nodejs.org/en/`
 
-```properties
+```console
 > node --version
   v14.16.1
 
@@ -2521,7 +2521,7 @@ Solution,
 
 #### 7.2.1. react-arena
 
-```properties
+```console
 > mkdir react-arena; cd react-arena; echo "" > webpack.config.js; echo "" > index.html; npm init -y; mkdir src; echo "" > src/index.js; echo "" > src/styles.css
 ```
 
@@ -2536,7 +2536,7 @@ react-arena
 ├── index.html
 ```
 
-```properties
+```console
 npm install --save-dev webpack webpack-cli
 ```
 
@@ -2564,7 +2564,7 @@ module.exports = {
 
 Now, run webpack, let it bundle our code and generate bundle.js
 
-```properties
+```console
 C:\\...\react-mern > npx webpack
 ```
 
@@ -2601,7 +2601,7 @@ Ex,
 
 `svg-inline-loader` this webpack loader inlines SVG file as module.
 
-```properties
+```console
 npm install --save-dev svg-inline-loader
 ```
 
@@ -2629,7 +2629,7 @@ module.exports = {
 
 So,
 
-```properties
+```console
 npm install --save-dev style-loader css-loader babel-loader @babel/preset-env @babel/preset-react @babel/core
 ```
 
@@ -2676,7 +2676,7 @@ So the full process looks something like this.
 **HtmlWebpackPlugin**  
 This plugin will generate an HTML5 file for you that includes all your webpack bundles in the body using `script` tags.
 
-```properties
+```console
 npm install --save-dev html-webpack-plugin
 echo "" > index.html
 ```
@@ -2741,7 +2741,7 @@ module.exports = {
 
 Now, run webpack, let it bundle our code and generate bundle.js
 
-```properties
+```console
 C:\\...\react-mern > npx webpack
 ```
 
@@ -2774,7 +2774,7 @@ dist/index.html - observe the script tag
 
 webpack-dev-server is a development server for webpack . Instead of generating a dist directory, it’ll keep track of your files in memory and serve them via a local server. More than that, it supports live reloading.
 
-```properties
+```console
 npm install webpack-dev-server --save-dev
 ```
 
@@ -2840,7 +2840,7 @@ Till now whatever we did is for any general web development with webpack.
 
 #### 7.2.7. Add react & react-dom
 
-```properties
+```console
 npm install --save react react-dom
 ```
 
@@ -2881,7 +2881,7 @@ ReactDOM.render(<Hello name="World!!"></Hello>, mountNode);
 
 Run app in development mode,
 
-```properties
+```console
 npm start
 ```
 
@@ -2889,7 +2889,7 @@ npm start
 
 Run app in production mode to generate the static build files,
 
-```properties
+```console
 npm run build
 ```
 
@@ -2915,7 +2915,7 @@ Complete code available here [avinash2wards/react-arena](https://github.com/avin
 
 This CLI app uses webpack as a bundler
 
-```properties
+```console
 npx create-react-app my-app
 cd my-app
 npm start
@@ -2933,7 +2933,7 @@ Documentation for CRA can be found here - [CRA](https://create-react-app.dev/)
 
 This CLI app uses [esbuild](https://esbuild.github.io) and [rollup](https://rollupjs.org/guide/en/) as a bundler
 
-```properties
+```console
 npm init vite@latest
 cd vite-project
 npm install
@@ -2963,7 +2963,7 @@ The mental model to build above UI is goes like, a Tweet is a parent component w
 
 Create and start the app.
 
-```properties
+```console
 npx create-react-app a-react-tweet
 cd a-react-tweet
 npm start
