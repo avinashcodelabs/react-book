@@ -1,4 +1,4 @@
-# React - the complete guide <!-- omit in toc -->
+# React - The Complete Guide <!-- omit in toc -->
 
 - [1. Essential JavaScript](#1-essential-javascript)
   - [1.1. Scopes - var, let & const](#11-scopes---var-let--const)
