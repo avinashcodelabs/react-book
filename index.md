@@ -1,5 +1,7 @@
 # React - The Complete Guide <!-- omit in toc -->
 
+![react-logo](assets/react-logo.svg)
+
 - [1. Essential JavaScript](#1-essential-javascript)
   - [1.1. Scopes - var, let & const](#11-scopes---var-let--const)
   - [1.2. const](#12-const)
