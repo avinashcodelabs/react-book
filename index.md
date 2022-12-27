@@ -1632,13 +1632,14 @@ index.html
 <div id="app"></div>
 
 <!-- Obtained from https://reactjs.org/docs/cdn-links.html -->
-<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
-<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
 
 <script>
   const mountNode = document.getElementById("app");
   const element = React.createElement("h1", { id: "title" }, "Hello World!!");
-  ReactDOM.render(element, mountNode);
+  const root = ReactDOM.createRoot(mountNode);
+  root.render(element);
 </script>
 ```
 
@@ -1655,8 +1656,8 @@ What do we see in browser and Element tab,
     </div>
 
     <!-- Obtained from https://reactjs.org/docs/cdn-links.html -->
-    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
 
     <script>
       const mountNode = document.getElementById("app");
@@ -1665,7 +1666,7 @@ What do we see in browser and Element tab,
         { id: "title" },
         "Hello World!!"
       );
-      ReactDOM.render(element, mountNode);
+      ReactDOM.createRoot(mountNode).render(element);
     </script>
   </body>
 </html>
@@ -1673,14 +1674,14 @@ What do we see in browser and Element tab,
 
 Let's break this down,
 
-- `div#app`, this is where react application is going to be rendered (created), usually called mount-node or container-node. We can have N number of mount-nodes and each one should have corresponding `ReactDOM.render()` associated with them. so all of them can co-exist, also
+- `div#app`, this is where react application is going to be rendered (created), usually called mount-node or container-node. We can have N number of mount-nodes and each one should have corresponding `ReactDOM.createRoot().render()` associated with them. so all of them can co-exist, also
   this makes easy in embedding the react application in other web projects.
 - The `react` package holds the API for elements, components, state, props etc.
-- The `react-dom` package (react's browser DOM renderer) is bride between React elements tree and the browser DOM. Often, we only use it for mounting react application to the html page with ReactDOM.render()`. Likewise we have react-native as renderer for iOS & Android platform.
+- The `react-dom` package (react's browser DOM renderer) is bride between React elements tree and the browser DOM. Often, we only use it for mounting react application to the html page with ReactDOM.createRoot().render()`. Likewise we have react-native as renderer for iOS & Android platform.
 - The complete list of React renderers is here `https://github.com/chentsulin/awesome-react-renderer`.
 - `React.createElement()` API is responsible for creating react elements like h1, div, input etc.
-- `ReactDOM.render(reactWhat, DOMWhere)` API is responsible for rendering the react elements to browser DOM (converting react elements or components to respective HTML DOM elements).
-- The object(s) we create using React.createElement()/JSX is not HTML or DOM node, they are just object description/representation on HTML elements. When these object goes through renderer (ReactDOM.render()), then this function will decide/renders, how each object mapping to HTML elements in browser.
+- `ReactDOM.createRoot(DOMWhere).render(reactWhat)` API is responsible for rendering the react elements to browser DOM (converting react elements or components to respective HTML DOM elements).
+- The object(s) we create using React.createElement()/JSX is not HTML or DOM node, they are just object description/representation on HTML elements. When these object goes through renderer (ReactDOM.createRoot().render()), then this function will decide/renders, how each object mapping to HTML elements in browser.
 
 ### 3.3. React.createElement API
 
@@ -1728,8 +1729,8 @@ maps to,
 <div id="app"></div>
 
 <!-- Obtained from https://reactjs.org/docs/cdn-links.html -->
-<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
-<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
 <script>
   const mountNode = document.getElementById("app");
   const myForm = React.createElement(
@@ -1767,7 +1768,7 @@ maps to,
       )
     )
   );
-  ReactDOM.render(myForm, mountNode);
+  ReactDOM.createRoot(mountNode).render(myForm);
 </script>
 ```
 
@@ -1813,8 +1814,8 @@ For the sake of exploring JSX syntax, let us use in-browser transformation inste
 <div id="app"></div>
 
 <!-- Obtained from https://reactjs.org/docs/cdn-links.html -->
-<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
-<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
 
 <!-- Obtained from https://babeljs.io/en/setup/#installation -->
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -1822,7 +1823,7 @@ For the sake of exploring JSX syntax, let us use in-browser transformation inste
 <script type="text/babel">
   const mountNode = document.getElementById("app");
   const element = <h1 id="title"> Hello World!!</h1>;
-  ReactDOM.render(element, mountNode);
+  ReactDOM.createRoot(mountNode).render(element);
 </script>
 ```
 
@@ -1922,7 +1923,7 @@ function greeting(timeArg) {
   else if (timeArg == 12) return <b>I don't care!</b>;
 }
 const element = <div>{greeting(time)}</div>;
-ReactDOM.render(element, mountNode);
+ReactDOM.createRoot(mountNode).render(element);
 
 // Good morning!
 ```
@@ -2433,10 +2434,10 @@ function Welcome() {
 
 const anInstance = React.createElement(Welcome);
 
-ReactDOM.render(anInstance, mountNode);
+ReactDOM.createRoot(mountNode).render(anInstance);
 
 // Can be used directly inside the render method
-// ReactDOM.render(React.createElement(Welcome), mountNode);
+// ReactDOM.createRoot(mountNode).render(React.createElement(Welcome));
 ```
 
 JSX way
@@ -2449,10 +2450,10 @@ function Welcome() {
 }
 
 const anInstanceJsx = <Welcome />;
-ReactDOM.render(anInstanceJsx, mountNode);
+ReactDOM.createRoot(mountNode).render(anInstanceJsx);
 
 // Can be used directly inside the render method
-// ReactDOM.render(<Welcome />, mountNode);
+// ReactDOM.createRoot(mountNode).render(<Welcome />);
 ```
 
 > - **Always start component names with a capital letter.**
@@ -2873,7 +2874,7 @@ function Hello({ name }) {
   );
 }
 const mountNode = document.querySelector("#root");
-ReactDOM.render(<Hello name="World!!"></Hello>, mountNode);
+ReactDOM.createRoot(mountNode).render(<Hello name="World!!"></Hello>);
 ```
 
 ```css
@@ -3015,7 +3016,7 @@ function Tweet() {
     </div>
   );
 }
-ReactDOM.render(<Tweet />, document.querySelector("#root"));
+ReactDOM.createRoot(document.querySelector("#root")).render(<Tweet />);
 ```
 
 A basic layout will be rendered something like this,
@@ -3061,7 +3062,7 @@ function Tweet() {
     </div>
   );
 }
-ReactDOM.render(<Tweet />, document.querySelector("#root"));
+ReactDOM.createRoot(document.querySelector("#root")).render(<Tweet />);
 ```
 
 src/NameWithHandle.js
@@ -3145,7 +3146,7 @@ function Tweet() {
     </div>
   );
 }
-ReactDOM.render(<Tweet />, document.querySelector("#root"));
+ReactDOM.createRoot(document.querySelector("#root")).render(<Tweet />);
 ```
 
 src/ActionButtons.js
@@ -3210,7 +3211,7 @@ function Tweet() {
     </div>
   );
 }
-ReactDOM.render(<Tweet />, document.querySelector("#root"));
+ReactDOM.createRoot(document.querySelector("#root")).render(<Tweet />);
 ```
 
 src/index.css; updated,
@@ -3291,7 +3292,7 @@ function CountryCard() {
 }
 const rootElement = document.getElementById("root");
 
-ReactDOM.render(
+ReactDOM.createRoot(rootElement).render(
   <CountryCard
     className="country-detail"
     name={isOfficial ? "Republic of India" : "India"}
@@ -3300,8 +3301,7 @@ ReactDOM.render(
     population={133.92}
     coordinates={getCoordinates()}
     languages={["Hindi", "English", "Kannada"]}
-  />,
-  rootElement
+  />
 );
 ```
 
@@ -3405,7 +3405,7 @@ function Child(props) {
 
 const rootElement = document.getElementById("root");
 
-ReactDOM.render(<Parent />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Parent />);
 
 // In Consol, after clicking on button
 // coming from child component: SyntheticBaseEvent {_reactName: 'onClick' …}
@@ -3435,9 +3435,8 @@ const MovieTitleCard = (props) => {
   return <h3>I'm from MovieTitleCard & staying in MovieTitleCard</h3>;
 };
 
-ReactDOM.render(
-  <MovieTitleCard>What!!! Am i abandoned???</MovieTitleCard>,
-  rootElement
+ReactDOM.createRoot(rootElement).render(
+  <MovieTitleCard>What!!! Am i abandoned???</MovieTitleCard>
 );
 
 // In UI,
@@ -3470,11 +3469,10 @@ const MovieTitleCard = (props) => {
   );
 };
 
-ReactDOM.render(
+ReactDOM.createRoot(rootElement).render(
   <MovieTitleCard>
     I'm an alien, I don't know where I am from but now staying in MovieTitleCard
-  </MovieTitleCard>,
-  rootElement
+  </MovieTitleCard>
 );
 
 // In UI,
@@ -3503,7 +3501,7 @@ const MovieTitleCard = ({ children, releaseDate }) => {
   );
 };
 
-ReactDOM.render(
+ReactDOM.createRoot(rootElement).render(
   <MovieTitleCard releaseDate={2015}>
     <div>
       <p>
@@ -3511,8 +3509,7 @@ ReactDOM.render(
       </p>
       <img src="https://i.gifer.com/JEbf.gif" height={200} alt="fire" />
     </div>
-  </MovieTitleCard>,
-  rootElement
+  </MovieTitleCard>
 );
 ```
 
@@ -3579,13 +3576,12 @@ function NavItem({ children }) {
   );
 }
 
-ReactDOM.render(
+ReactDOM.createRoot(rootElement).render(
   <Nav>
     <NavItem key="1">Home</NavItem>
     <NavItem key="2">Products</NavItem>
     <NavItem key="3">Services</NavItem>
-  </Nav>,
-  rootElement
+  </Nav>
 );
 
 // In UI,
@@ -3620,9 +3616,9 @@ function DisplayMonitorFunc({ size = "21 inch", message }) {
   );
 }
 
-const mountNode = document.querySelector("#root");
+const  = document.querySelector("#root");
 
-ReactDOM.render(
+ReactDOM.createRoot(mountNode).render(
   <>
     <h3>Class component</h3>
     <DisplayMonitorClass size="14 inch" message="prop has be en passed" />
@@ -3631,8 +3627,7 @@ ReactDOM.render(
     <h3>Functional component</h3>
     <DisplayMonitorFunc size="14 inch" message="prop has been passed" />
     <DisplayMonitorFunc message="No prop has been passed, so using the default prop" />
-  </>,
-  mountNode
+  </>
 );
 
 // In UI
@@ -3827,9 +3822,8 @@ function Tweet({ tweet }) {
   );
 }
 
-ReactDOM.render(
-  <Tweets tweets={TWEETS_DATA} />,
-  document.querySelector("#root")
+ReactDOM.createRoot(document.querySelector("#root")).render(
+  <Tweets tweets={TWEETS_DATA} />
 );
 ```
 
@@ -3893,7 +3887,7 @@ const Form = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Form />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Form />);
 ```
 
 - Here, Component rendered first time with initial value lucky but react does not know that we are changing the value of searchTerm.
@@ -3927,7 +3921,7 @@ const Form = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Form />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Form />);
 
 // Now searchTerm is in sync with UI
 ```
@@ -3959,7 +3953,7 @@ const Form = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Form />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Form />);
 
 // Try typing anything other than text, it will sanitize it.
 ```
@@ -4013,7 +4007,7 @@ const Counter = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Counter />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Counter />);
 ```
 
 In smaller apps, we may get the most updated value by just putting count+1 , but in big apps where it involved heavy computation;the function updater is must i.e. `count => count + 1`
@@ -4053,7 +4047,7 @@ const Counter = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Counter />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Counter />);
 
 // Look in the console, below message only prints on first render, there onwards
 // it will use the state value from react internals and ignore the initial state value.
@@ -4115,7 +4109,7 @@ const Todo = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Todo />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Todo />);
 ```
 
 ## 12. useEffect - Handling Side Effects
@@ -4173,7 +4167,7 @@ const Example = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Example />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Example />);
 
 // In console and chrome's tab name,
 // Hi, useEffect
@@ -4209,7 +4203,7 @@ const Counter = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Counter />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Counter />);
 ```
 
 When initial render,
@@ -4288,7 +4282,7 @@ const Profile = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Profile />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Profile />);
 ```
 
 The Mental Model
@@ -4426,7 +4420,7 @@ const ProfileContainer = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<ProfileContainer />, rootElement);
+ReactDOM.createRoot(rootElement).render(<ProfileContainer />);
 ```
 
 Now, anytime `username` changes (and only when username changes), once the component re-renders and the browser re-paints the view, our effect will be invoked and the profile state will be synchronized with the result of our API request.
@@ -4492,7 +4486,7 @@ const ManageDisplay = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<ManageDisplay />, rootElement);
+ReactDOM.createRoot(rootElement).render(<ManageDisplay />);
 ```
 
 ![useeffect-cleanup](assets/useeffect-cleanup.png)
@@ -4533,7 +4527,7 @@ const ManageDisplay = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<ManageDisplay />, rootElement);
+ReactDOM.createRoot(rootElement).render(<ManageDisplay />);
 ```
 
 > Note: Try same example by excluding the cleanup function and click on toggle, though it removed the component from DOM, timer still in memory and printing the message 😲😲.  
@@ -4604,7 +4598,7 @@ const ProfileContainer = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<ProfileContainer />, rootElement);
+ReactDOM.createRoot(rootElement).render(<ProfileContainer />);
 ```
 
 The Mental Model
@@ -4641,7 +4635,7 @@ const App = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 Ex-5 Wait component.
@@ -4678,7 +4672,7 @@ const App = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 ## 13. `useLayoutEffect`
@@ -4750,7 +4744,7 @@ function App() {
   );
 }
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 ## 14. Custom Hooks
@@ -4922,7 +4916,7 @@ const Post = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 If we observe above code, everything works fine, but
@@ -4942,7 +4936,7 @@ If we observe above code, everything works fine, but
   };
   ```
 
-- Consumption may vary, for an example, based on hovering variable, one can display a tooltip with different text or nested elements, panel, popup or hide & show divs etc.
+- Consumption may vary, for an example, based on hovering variable, one can display a tooltip with different text or nested elements, panel, popup or hide & show div etc.
 - For 1 or 2 components, duplicating is ok. Think of a scenario, where we want build stock market kind of financial or statistical application which involves 1000s of components needs hovering/popup feature.
 
 How to share non-visual logic or stateful logic between components?
@@ -5019,7 +5013,7 @@ const App = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 Ex-2, Create a `useWindowDimensions` custom Hook. It should return an object with a `width` property that represents the current width of the window and a `height` property which represents the current height.
@@ -5073,13 +5067,12 @@ const Comp2 = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(
+ReactDOM.createRoot(rootElement).render(
   <>
     <Comp1 />
     <hr></hr>
     <Comp2 />
-  </>,
-  rootElement
+  </>
 );
 ```
 
@@ -5157,7 +5150,7 @@ const Counter = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Counter />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Counter />);
 ```
 
 How to **Reset** the Counter, with the current implementation; it's not possible. What if instead of dispatching the value directly, we **dispatch the type of action** that occurred? That way, based on the type of action, our reducer can decide how to update the state.
@@ -5198,7 +5191,7 @@ const Counter = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Counter />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Counter />);
 ```
 
 ### 15.3. useState vs useReducer
@@ -5287,7 +5280,7 @@ const Register = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Register />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Register />);
 ```
 
 The above code is pretty imperative approach to solving the problem. We’re conforming to the operational model of the machine by describing how we want to accomplish the task.
@@ -5415,7 +5408,7 @@ const Register = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Register />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Register />);
 ```
 
 Instead of describing how we want to accomplish the task, above code snippet using useReducer describe what we’re trying to accomplish. It's declarative approach.
@@ -5465,7 +5458,7 @@ const StopWatch = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<StopWatch />, rootElement);
+ReactDOM.createRoot(rootElement).render(<StopWatch />);
 ```
 
 ![useref-prob-statement](assets/useref-prob-statement.png)
@@ -5532,7 +5525,7 @@ const StopWatch = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<StopWatch />, rootElement);
+ReactDOM.createRoot(rootElement).render(<StopWatch />);
 ```
 
 Now instead of `id` being re-declared on every render, because it’s really a value coming from useState , React will persist it across renders.
@@ -5598,7 +5591,7 @@ const Form = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Form />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Form />);
 ```
 
 If we pass the "return value you from `useRef` as a `ref` prop on any React element, React will set the `current` property to the corresponding DOM. This allows you to do things like grab input values or set focus.
@@ -5650,7 +5643,7 @@ import ReactDOM from "react-dom";
 const LangContext = React.createContext("english");
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<></>, rootElement);
+ReactDOM.createRoot(rootElement).render(<></>);
 ```
 
 `LangContext` , has two properties, both of which are React components, `Provider`, and `Consumer`.
@@ -5688,7 +5681,7 @@ const NavBar = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 Now, any component in our component tree that needs the value lang have the option to subscribe to it using `<LangContext.Consumer>` OR `useContext(LangContext)`
@@ -5770,7 +5763,7 @@ const KannadaNavigation = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 Clicking on the button won't work as it not updating the `lang` yet.
@@ -5857,7 +5850,7 @@ const KannadaNavigation = ({ toggle }) => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 Final output, Clicking on button changes the language.
@@ -6006,7 +5999,7 @@ const NavBar = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 NOTE :
@@ -6014,7 +6007,7 @@ NOTE :
 - For demo purpose, we have kept the Context and all the components in the same file. - In actual projects, Context are in dedicated files (modules) - LangContext.js, AuthContext.js etc.
 - So that, any component from the project can import those context object separately.
 - Typically, we create a new Context for each unique piece of data that needs to be available throughout the component tree.
-- Exmaple, LangContext, AuthContext, ThemeContext etc.
+- Example, LangContext, AuthContext, ThemeContext etc.
 
   ```js
   // LangContext.js
@@ -6084,7 +6077,7 @@ const App = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 It has performance issues, look at the console.  
@@ -6197,7 +6190,7 @@ const App = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 Click on Next button,everything work as expect.
@@ -6212,7 +6205,7 @@ Problem,
 - Because functions are reference types, when `React.memo` compares the previous `playNextMovie` prop with the new `playNextMovie` prop, even though they appear the same, **they’re compared by their references which will always be different.**
 - So, for the same reason, `Makers` components is not getting re-rendered.
 
-2 soluitons,
+2 solutions,
 
 1. Customize `React.memo` to only compare the `title` prop and ignore the `playNextMovie` props.
 2. We can make the `playNextMovie` prop the same reference across renders using `React.useCallback()`
@@ -6320,7 +6313,7 @@ const factorialOf = (n) => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<CalcFact />, rootElement);
+ReactDOM.createRoot(rootElement).render(<CalcFact />);
 ```
 
 Everything works here but with performance issue.
@@ -6364,7 +6357,7 @@ const factorial = React.useMemo(() => {
 
 `React.memo` is a Higher-order component (HOC) that lets you skip re-rendering a component if its props haven't changed.
 
-`Custom Hooks` - In order to share non-visual logic or stateful logic, we had to rely on patterns like Higher-order components or Render-props. Now, we can accomplish the samething by building our own custom Hooks.
+`Custom Hooks` - In order to share non-visual logic or stateful logic, we had to rely on patterns like Higher-order components or Render-props. Now, we can accomplish the same thing by building our own custom Hooks.
 
 ## 22. Code-Splitting
 
@@ -6380,7 +6373,7 @@ index.jsx
 
 ```js
 import React from "react";
-import { render } from "react-dom";
+import ReactDOM from "react-dom";
 import { Synopsis } from "./Synopsis";
 import Plot from "./Plot";
 
@@ -6400,7 +6393,7 @@ const Movie = () => {
 };
 
 const rootElement = document.getElementById("root");
-render(<Movie />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Movie />);
 ```
 
 Synopsis.jsx
@@ -6432,7 +6425,7 @@ const Plot = () => {
       width: "75%",
       marginTop: "15px",
     },
-    moveiGif: {
+    movieGif: {
       float: "left",
       marginRight: "21px",
     },
@@ -6445,7 +6438,7 @@ const Plot = () => {
         alt="inception"
         height="300"
         width="250"
-        style={styles.moveiGif}
+        style={styles.movieGif}
       />
       Dom Cobb is a skilled thief, the absolute best in the dangerous art of extraction,
       stealing valuable secrets from deep within the subconscious during the dream
@@ -6524,7 +6517,7 @@ index.js; updated,
 
 ```js
 import React from "react";
-import { render } from "react-dom";
+import ReactDOM from "react-dom";
 
 import { Synopsis } from "./Synopsis";
 
@@ -6550,7 +6543,7 @@ const Movie = () => {
 };
 
 const rootElement = document.getElementById("root");
-render(<Movie />, rootElement);
+ReactDOM.createRoot(rootElement).render(<Movie />);
 ```
 
 Output,
@@ -6625,7 +6618,7 @@ const App = () => (
 );
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 ### 23.6. Link with an Object
@@ -6674,7 +6667,7 @@ const App = () => (
 );
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 
 /*When we select /topics route,
 
@@ -6756,7 +6749,7 @@ const App = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 ### 23.8. Nested Routes
@@ -6784,7 +6777,7 @@ const movies = [
     name: "V for Vendetta",
     id: "vvf",
     description:
-      'In a future British tyranny, a shadowy freedom fighter, known only by the alias of "V", plots to overthrow it withthe help of a young woman.',
+      'In a future British tyranny, a shadowy freedom fighter, known only by the alias of "V", plots to overthrow it with the help of a young woman.',
     characters: [
       {
         name: "V",
@@ -6868,7 +6861,7 @@ const App = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 
 /*
 
@@ -6910,7 +6903,7 @@ const App = () => (
 );
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 
 /*When we select /about route,
 
@@ -6981,7 +6974,7 @@ const App = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 #### 23.10.2. `<Navigate>` component declarative method
@@ -7041,7 +7034,7 @@ const App = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 ### 23.11. Query Strings
@@ -7050,7 +7043,7 @@ The URI
 
 `https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299/?_encoding=UTF8&pd_rd_w=BCpfg`
 
-- https - Protocal
+- https - Protocol
 - www.amazon.com - Hostname
 - /Atomic-Habits-Proven-Build-Break/dp/ - Path
 - 0735211299 - URL Parameters
@@ -7059,7 +7052,7 @@ The URI
 Query Strings starts with **?** and multiple strings are separated by **&**.
 
 JavaScript/Browser has a built-in utility to work with query strings.  
-Click here for full documenation - [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
+Click here for full documentation - [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
 
 In React Router,we have `useSearchParams` Hook which is a small wrapper over browsers built-in `URLSearchParams` which gives us utility methods for dealing with query strings.
 
@@ -7104,7 +7097,7 @@ const App = () => (
 );
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 
 /*
 
@@ -7152,7 +7145,7 @@ const App = () => (
 );
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 
 /*
 
@@ -7170,7 +7163,7 @@ UI - NOOOOOOT FOUND
 
 ### 23.13. Single Route, Render Multiple Components
 
-Often we need this feature in buiiding a Sidebar or Breadcrumbs.
+Often we need this feature in building a Sidebar or Breadcrumbs.
 
 How to render multiple components for matching single route?
 
@@ -7249,7 +7242,7 @@ const App = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 ### 23.14. Custom Active Link
@@ -7299,7 +7292,7 @@ const App = () => (
 );
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 ### 23.15. Auth pattern for protected Routes
@@ -7379,12 +7372,12 @@ const App = () => (
 );
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 - Two main things about `RequireAuth`
   - First, it’s only api is a children element.
-  - Second, if the user is authenticated, it should render that children element, if not, it should redirect the user to a page where they can  uthenticate (in our case, `/login`).
+  - Second, if the user is authenticated, it should render that children element, if not, it should redirect the user to a page where they can  authenticate (in our case, `/login`).
 - Notice because we get the initial location the user is trying to visit via the `useLocation` hook, and pass that as a state prop when we redirect them to `/login`, after they authenticated, we can redirect them back to this original path.
 - Clear the `localStorage` time to time to play with feature
 
@@ -7431,7 +7424,7 @@ const App = () => (
 );
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
 ```js
