@@ -7660,7 +7660,8 @@ test("<App>", () => {
 
 The `user-event` library also has several other methods like `dblClick` for double clicking an element and `type` for typing into a textbox and so on. 
 
-> Note:
+Note:
+
 - Call `userEvent.click(button);` two times and notice the output.
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) official documentation.
 - [user-event](https://testing-library.com/docs/user-event/intro) official documentation.
