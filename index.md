@@ -184,6 +184,21 @@
   - [24.3 First test case](#243-first-test-case)
   - [24.4 RTL's methods for finding elements](#244-rtls-methods-for-finding-elements)
   - [24.5 RTL's way to simulate DOM events](#245-rtls-way-to-simulate-dom-events)
+- [25. Class Components](#25-class-components)
+  - [25.1 Define class components](#251-define-class-components)
+  - [25.2 Props with class components](#252-props-with-class-components)
+  - [25.2 Adding state in class components](#252-adding-state-in-class-components)
+  - [25.2 Updating state in class components](#252-updating-state-in-class-components)
+  - [25.3 The Component Lifecycle](#253-the-component-lifecycle)
+    - [25.3.1 Mounting](#2531-mounting)
+    - [25.3.2 Updating](#2532-updating)
+    - [25.3.3 Unmounting](#2533-unmounting)
+    - [25.3.4 Summary](#2534-summary)
+- [26. Error Handling](#26-error-handling)
+  - [26.1 The error](#261-the-error)
+  - [26.2 Try Catch](#262-try-catch)
+  - [26.3 getDerivedStateFromError](#263-getderivedstatefromerror)
+  - [26.4 componentDidCatch](#264-componentdidcatch)
 
 ---
 
@@ -7665,3 +7680,485 @@ Note:
 - Call `userEvent.click(button);` two times and notice the output.
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) official documentation.
 - [user-event](https://testing-library.com/docs/user-event/intro) official documentation.
+
+## 25. Class Components
+
+### 25.1 Define class components
+
+The simplest way to define a class component is to write a ES6 `class`:
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+class Hello extends React.Component {
+  render() {
+    return <h1>Hello World</h1>;
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(<Hello />);
+```
+
+- To make a ES6 class to Component, we derive/extend it from `React.Component`
+- It should have a `render()` method returning react elements/JSX.
+- Calling/invoking/creating instances of either the functional or class components in react is same,i.e. `<Hello />`
+
+### 25.2 Props with class components
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+class Hello extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(<Hello name={"Avinash"} />);
+```
+- In a `class` component, we can get access to props from the props key on the component’s instance `this`.
+- We use `this.props` to access the props passed to the components
+- We call `root.render()` with the `<Hello name={"Avinash"} />` element.
+- React calls the `Hello` component with `name={"Avinash"}` as the props.
+- Our `Hello` component returns a `<h1>Hello, Avinash</h1>` element as the result.
+React DOM efficiently updates the DOM to match `<h1>Hello, Avinash</h1>`.
+
+
+### 25.2 Adding state in class components
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+class Hello extends React.Component {
+  state = {
+    name: "avinash",
+  };
+
+  render() {
+    return <h1>Hello, {this.state.name}</h1>;
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(<Hello />);
+```
+
+- To add state to a class component, we’ll use `state` static member of ES6 class spec and isn’t a React specific method.
+- By adding `state` to the component, we can now access it (via `this.state`) anywhere in our class.
+
+### 25.2 Updating state in class components
+
+- React has helper method to update the state of a component and re-render the UI. 
+- It is called `setState` and it lives on the component’s instance, `this`.
+- It is always immutable update.
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+class Hello extends React.Component {
+  state = {
+    name: "Avinash",
+  };
+
+  updateName = () => {
+    this.setState({
+      name: "React",
+    });
+  };
+
+  render() {
+    return (
+      <>
+        <h1>Hello, {this.state.name}</h1>
+        <button onClick={this.updateName}>Change Name</button>
+      </>
+    );
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(<Hello />);
+```
+
+- **NEVER set state like this.state.name= "something".** 
+- Direct mutation not allowed. React will have no idea that the component’s state changed and therefore won’t be able to update the UI.
+- When `this.setState()` invoked, React will update the `name` property on the component’s state to be whatever new name is. 
+- Then, because the state changed, React will re-invoke the render method (re-render) and get a new description of the UI based on the new state.
+- Finally, with that new description of the UI, React will update the DOM.
+
+### 25.3 The Component Lifecycle
+
+Every time a React app runs, all of our components go through a specific lifecycle, we can break down that lifecycle into three parts.
+
+1. When the component gets added to the DOM (**mounting**).
+2. When the component updates its state or receives new data via props
+(**updating**).
+3. When the component gets removed from the DOM (**unmounting**).
+
+Here are the most common things occurs in any typical application (in order in which they occur).
+- Set the component’s initial state
+- Render a DOM node (return React elements)
+- Make an Ajax requests/http calls/Network calls
+- Set up listeners (i.e. addEventListener) or manipulating DOM directly without using React or Timers
+  
+Will see how these are fit into React components lifecycle methods.
+
+#### 25.3.1 Mounting
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+class Hello extends React.Component {
+  state = {
+    // Set the component’s initial state
+    name: "Avinash",
+    place: "Mysore",
+  };
+
+  componentDidMount() {
+    // Make an Ajax requests/http calls/Network calls
+    fetch("https://jsonplaceholder.typicode.com/users/4")
+      .then((res) => res.json())
+      .then((user) => {
+        this.setState({ name: user.name });
+      });
+  }
+
+  render() {
+    // Render a DOM node (return React elements)
+    return (
+      <>
+        <h1>
+          Hello, {this.state.name}, {this.state.place}
+        </h1>
+      </>
+    );
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(<Hello />);
+
+```
+- Set the component’s initial state
+  - To set the initial state of the component, we will use `state` static variable
+- Render a DOM node (return React elements)
+  - Once the initial state of the component is set, the next lifecycle method to be called is `render`.
+  - Though we’re not exactly rendering a DOM node ourself, we’ll use the `render` lifecycle method in order to describe (using JSX) the type of DOM node you want to render. (Actual DOM or HTML element will be created at `ReactDOM.render()`.
+- Make an Ajax requests/http calls/Network calls
+  - `componentDidMount` is invoked only one time when the component is first mounted to the DOM. Because of this, it’s a great place to make an http calls.
+
+> Note: **Set up listeners, Timers**
+>
+> Similar to making an Ajax http calls, we can set up any listeners once the component has been mounted to the DOM, i.e., in `componentDidMount`. Why here, because component is already mounted and DOM APIs area available for access.
+>
+> Ex,
+>  ```js
+>   componentDidMount() {
+>      this.timerId = setTimeout(() => {
+>        console.log("timeout");
+>      }, 1000);
+>     window.addEventListener("resize", () => {});
+>    }
+>   ```
+
+#### 25.3.2 Updating
+
+We want to hook into when a component updates its state or receives new data
+via props? For an example,
+
+- Re-render the UI with the updated state or props
+- Re-fetching data
+- Re-setting a listener
+
+**Re-render**
+
+It’s important to note that `render` will be invoked not only when the component is first added to the DOM, but also any time after that when its `state` changes (via `setState` ) or when it receives new, updated `props`.
+
+**Re-fetching data**
+
+`componentDidUpdate` is invoked after the component’s local state changes or after it receives new props - **but it’s not invoked on the initial render**. It’s passed two arguments, the component’s previous props and the component’s previous state.
+
+Ex, Prop changing,
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+class Hello extends React.Component {
+  state = {
+    name: "Avinash",
+    place: "Mysore",
+  };
+
+  componentDidMount() {
+    fetch(`https://jsonplaceholder.typicode.com/users/${this.props.id}`)
+      .then((res) => res.json())
+      .then((user) => {
+        this.setState({ name: user.name });
+      });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // Called on when, component re-renders (that is state change or props change)
+    if (prevProps.id != this.props.id)
+      fetch(`https://jsonplaceholder.typicode.com/users/${this.props.id}`)
+        .then((res) => res.json())
+        .then((user) => {
+          this.setState({ name: user.name });
+        });
+  }
+
+  render() {
+    return (
+      <>
+        <h1>
+          Hello, {this.state.name}, {this.state.place}
+        </h1>
+      </>
+    );
+  }
+}
+
+function UserSelector() {
+  const [selectedUser, setSelectedUser] = React.useState(1);
+  return (
+    <>
+      <button onClick={() => setSelectedUser(2)}>2</button>
+      <button onClick={() => setSelectedUser(3)}>3</button>
+      <Hello id={selectedUser}></Hello>
+    </>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(<UserSelector />);
+```
+
+Ex, Internal/local component state changing,
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+class Hello extends React.Component {
+  state = {
+    name: "Avinash",
+    place: "Mysore",
+    id: 1,
+  };
+
+  componentDidMount() {
+    fetch(`https://jsonplaceholder.typicode.com/users/${this.state.id}`)
+      .then((res) => res.json())
+      .then((user) => {
+        this.setState({ name: user.name });
+      });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // Called on when, component re-renders (that is state change or props change)
+    if (prevState.id != this.state.id)
+      fetch(`https://jsonplaceholder.typicode.com/users/${this.state.id}`)
+        .then((res) => res.json())
+        .then((user) => {
+          this.setState({ name: user.name });
+        });
+  }
+
+  render() {
+    return (
+      <>
+        <button onClick={() => this.setState({ id: 2 })}>2</button>
+        <button onClick={() => this.setState({ id: 3 })}>3</button>
+        <h1>
+          Hello, {this.state.name}, {this.state.place}
+        </h1>
+      </>
+    );
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(<Hello></Hello>);
+```
+
+This allows you to compare the previous props/state to the current props/state so
+you can decide if you need to do anything.
+
+> **Re-setting a Listener or timers**
+> 
+> Similar to re-fetching data, we’d use `componentDidUpdate` to listen for prop/state changes in order to re-set a listener.
+
+#### 25.3.3 Unmounting
+
+What should happen when Components gets removed from DOM. Nullify timers, remove event listeners, otherwise memory leaks.
+
+To do this, you can hook into React’s `componentWillUnmount` lifecycle method. It’ll be called when the component is about to be removed from the DOM.
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+class Home extends React.Component {
+  componentDidMount() {
+    this.timerId = setTimeout(() => {
+      console.log("timeout");
+    }, 1000);
+    window.addEventListener("resize", () => {});
+  }
+  componentWillUnmount() {
+    // clearTimeout(this.timerId);
+    window.removeEventListener("resize", () => {});
+  }
+  render() {
+    return <></>;
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(<Home></Home>);
+```
+
+#### 25.3.4 Summary
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+class App extends React.Component {
+  constructor(props) {
+    // Good for establishing the initial state of a component
+    super(props);
+    this.state = {};
+  }
+  componentDidMount() {
+    // Invoked once the component is mounted to the DOM.
+    // Good for making AJAX requests.
+  }
+  componentDidUpdate() {
+    // Invoked immediately after updating occurs.
+    // Good for AJAX requests based on changing props or DOM ope rations.
+  }
+  componentWillUnmount() {
+    // Called right before a component is unmounted.
+    // Good for cleaning up listeners.
+  }
+  render() {
+    return <></>;
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(<Home></Home>);
+```
+
+Other less or rarely used lifecycle methods.
+- getDerivedStateFromProps
+- shouldComponentUpdate
+- getSnapshotBeforeUpdate
+
+## 26. Error Handling
+
+### 26.1 The error
+
+This code will produces the blank white scree in the browser giving no clue to user, that what happened?
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+function Welcome({ name }) {
+  return <>Welcome, {name.toUpperCase()}</>;
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(<Welcome />);
+```
+
+If we open the browser's console, we'll see something like `index.js:5 Uncaught TypeError: Cannot read properties of undefined (reading 'toUpperCase')` in red color.
+
+Let's handle the error using Try catch.
+
+### 26.2 Try Catch
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+function ErrorComponent({ errorMessage }) {
+  return <h1 style={{ color: "red" }}>{errorMessage}</h1>;
+}
+
+function Welcome({ name }) {
+  try {
+    return <div>Welcome, {name.toUpperCase()}</div>;
+  } catch (error) {
+    return <ErrorComponent errorMessage={error.message} />;
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(<Welcome />);
+```
+This will show the error message in browser's UI - `Cannot read properties of undefined (reading 'toUpperCase')`.
+
+But, but what if I don't want to wrap every component in my app in a try/catch block?
+
+### 26.3 getDerivedStateFromError
+
+`static getDerivedStateFromError(error)`
+
+This lifecycle is invoked after an error has been thrown by a descendant component. It receives the error that was thrown as a parameter and should return a value to update state.
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+function ErrorComponent({ message }) {
+  return <h1 style={{ color: "red" }}>{message}</h1>;
+}
+
+class ErrorBoundary extends React.Component {
+  state = { errorMessage: "" };
+
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { errorMessage: error.message };
+  }
+
+  render() {
+    if (this.state.errorMessage) {
+      // You can render any custom fallback UI
+      return <ErrorComponent message={this.state.errorMessage} />;
+    }
+
+    return this.props.children;
+  }
+}
+
+function Welcome({ name }) {
+  return <div>Welcome, {name.toUpperCase()}</div>;
+}
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(
+  <ErrorBoundary>
+    <Welcome />
+  </ErrorBoundary>
+);
+```
+
+> Note: `getDerivedStateFromError()` is called during the `render` phase, so side-effects are not permitted. For those use cases, use `componentDidCatch()` instead.
+
+### 26.4 componentDidCatch
+
+`componentDidCatch(error, info)`
+
+**Produce the condition where getDerivedStateFromError is insufficient and fix that issue with componentDidCatch with an example.**
