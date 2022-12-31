@@ -203,7 +203,7 @@
   - [27.1 Single source of truth](#271-single-source-of-truth)
   - [27.2 State is read-only](#272-state-is-read-only)
   - [27.3 Changes are made with pure functions](#273-changes-are-made-with-pure-functions)
-  - [27.4 Example, React with Redux](#274-example-react-with-redux)
+  - [27.4 An example, React with Redux](#274-an-example-react-with-redux)
 
 ---
 
@@ -8258,7 +8258,7 @@ const reducer = combineReducers({ visibilityFilter, todos })
 const store = createStore(reducer)
 ```  
 
-### 27.4 Example, React with Redux
+### 27.4 An example, React with Redux
 
 1. `npx create-react-app redux-counter`
 2. `cd redux-counter`
