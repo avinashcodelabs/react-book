@@ -199,6 +199,11 @@
   - [26.2 Try Catch](#262-try-catch)
   - [26.3 getDerivedStateFromError](#263-getderivedstatefromerror)
   - [26.4 componentDidCatch](#264-componentdidcatch)
+- [27. State management with Redux](#27-state-management-with-redux)
+  - [27.1 Single source of truth](#271-single-source-of-truth)
+  - [27.2 State is read-only](#272-state-is-read-only)
+  - [27.3 Changes are made with pure functions](#273-changes-are-made-with-pure-functions)
+  - [27.4 Example, React with Redux](#274-example-react-with-redux)
 
 ---
 
@@ -8162,3 +8167,146 @@ ReactDOM.createRoot(rootElement).render(
 `componentDidCatch(error, info)`
 
 **Produce the condition where getDerivedStateFromError is insufficient and fix that issue with componentDidCatch with an example.**
+
+## 27. State management with Redux
+
+Redux is a predictable state container for JavaScript apps.
+
+Redux can be described in three fundamental principles:
+- Single source of truth
+- State is read-only
+- Changes are made with pure functions
+
+### 27.1 Single source of truth
+The global state of your application is stored in an object tree within a single store.
+
+```js
+console.log(store.getState())
+
+/* Prints
+{
+  visibilityFilter: 'SHOW_ALL',
+  todos: [
+    {
+      text: 'Consider using Redux',
+      completed: true,
+    },
+    {
+      text: 'Keep all state in a single tree',
+      completed: false
+    }
+  ]
+}
+*/
+```
+
+### 27.2 State is read-only
+The only way to change the state is to emit an action, an object describing what happened.
+
+```js
+store.dispatch({
+  type: 'COMPLETE_TODO',
+  index: 1
+})
+
+store.dispatch({
+  type: 'SET_VISIBILITY_FILTER',
+  filter: 'SHOW_COMPLETED'
+})
+```
+
+
+### 27.3 Changes are made with pure functions
+To specify how the state tree is transformed by actions, you write pure reducers.
+
+```js
+function visibilityFilter(state = 'SHOW_ALL', action) {
+  switch (action.type) {
+    case 'SET_VISIBILITY_FILTER':
+      return action.filter
+    default:
+      return state
+  }
+}
+
+function todos(state = [], action) {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [
+        ...state,
+        {
+          text: action.text,
+          completed: false
+        }
+      ]
+    case 'COMPLETE_TODO':
+      return state.map((todo, index) => {
+        if (index === action.index) {
+          return Object.assign({}, todo, {
+            completed: true
+          })
+        }
+        return todo
+      })
+    default:
+      return state
+  }
+}
+
+import { combineReducers, createStore } from 'redux'
+const reducer = combineReducers({ visibilityFilter, todos })
+const store = createStore(reducer)
+```  
+
+### 27.4 Example, React with Redux
+
+1. `npx create-react-app redux-counter`
+2. `cd redux-counter`
+3. `npm install redux react-redux`
+4. Write below code to `index.js` file
+
+src/index.js
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createStore } from "redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
+
+function counterReducer(state = 0, action) {
+  if (action.type == "up") {
+    return state + action.value;
+  }
+  if (action.type == "down") {
+    return state - action.value;
+  }
+  if (action.type == "reset") {
+    return 0;
+  }
+  return state;
+}
+
+const store = createStore(counterReducer);
+
+function Counter() {
+  const dispatch = useDispatch();
+  const count = useSelector(function (state) {
+    return state;
+  });
+  return (
+    <>
+      <button onClick={() => dispatch({ type: "up", value: 1 })}>+</button>
+      <span>{count}</span>
+      <button onClick={() => dispatch({ type: "down", value: 1 })}>-</button>
+      <button onClick={() => dispatch({ type: "reset" })}>reset</button>
+    </>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.createRoot(rootElement).render(
+  <Provider store={store}>
+    <Counter />
+  </Provider>
+);
+```
