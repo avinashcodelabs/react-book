@@ -8128,7 +8128,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 function ErrorComponent({ message }) {
-  return <h1 style={{ color: 'red' }}>{message}</h1>;
+  return <h1>{message}</h1>;
 }
 
 class ErrorBoundary extends React.Component {
