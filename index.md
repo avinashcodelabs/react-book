@@ -8,56 +8,61 @@
   - [1.1. Scopes - var, let \& const](#11-scopes---var-let--const)
   - [1.2. const](#12-const)
   - [1.3. let](#13-let)
-  - [1.4. Arrow function expressions](#14-arrow-function-expressions)
-    - [1.4.1. Concise syntax](#141-concise-syntax)
-    - [1.4.2. _this_ with Arrow function](#142-this-with-arrow-function)
-  - [1.5. Modern Object Literals - Object initializer](#15-modern-object-literals---object-initializer)
-  - [1.6. Destructuring assignment](#16-destructuring-assignment)
-    - [1.6.1. Object destructuring](#161-object-destructuring)
-    - [1.6.2. Array destructuring](#162-array-destructuring)
-  - [1.7. Spread \& Rest](#17-spread--rest)
-    - [1.7.1. Rest syntax](#171-rest-syntax)
-    - [1.7.2. Spread Syntax](#172-spread-syntax)
-  - [1.8. Template literals (Template strings)](#18-template-literals-template-strings)
-    - [1.8.1. Multiline strings](#181-multiline-strings)
-    - [1.8.2. Embedding javascript expression (Expression interpolation)](#182-embedding-javascript-expression-expression-interpolation)
-  - [1.9. Classes](#19-classes)
-  - [1.10. Callback, Promise and Async/Await](#110-callback-promise-and-asyncawait)
-    - [1.10.1. Callback](#1101-callback)
-    - [1.10.2. Promise](#1102-promise)
-    - [1.10.3. Async \& Await](#1103-async--await)
-  - [1.11. JavaScript modules (ES Modules)](#111-javascript-modules-es-modules)
-    - [1.11.1. export](#1111-export)
-    - [1.11.2. Named exports](#1112-named-exports)
-    - [1.11.3. Default exports](#1113-default-exports)
-    - [1.11.4. Combine default + named export](#1114-combine-default--named-export)
-    - [1.11.5. Rename export](#1115-rename-export)
-    - [1.11.6. Rename import](#1116-rename-import)
-    - [1.11.7. Import all](#1117-import-all)
-  - [1.12. The arguments object](#112-the-arguments-object)
-  - [1.13. IIFE](#113-iife)
-  - [1.14. Function as First-Class citizen (first-class objects)](#114-function-as-first-class-citizen-first-class-objects)
-  - [1.15. Defaults parameter](#115-defaults-parameter)
-  - [1.16. Ternary operator](#116-ternary-operator)
-  - [1.17. Higher Order Functions (HOF)](#117-higher-order-functions-hof)
-    - [1.17.1. HOF - returning a fn](#1171-hof---returning-a-fn)
-    - [1.17.2. HOF - taking fn as an argument](#1172-hof---taking-fn-as-an-argument)
-  - [1.18. Array Methods (map, filter, find, includes)](#118-array-methods-map-filter-find-includes)
-  - [1.19. The DOM \& Events](#119-the-dom--events)
-    - [1.19.1. Intro](#1191-intro)
-    - [1.19.2. Window](#1192-window)
-    - [1.19.3. Document](#1193-document)
-    - [1.19.4. Navigator](#1194-navigator)
-    - [1.19.5. DOM selection/traversing](#1195-dom-selectiontraversing)
-    - [1.19.6. Creating HTML](#1196-creating-html)
-    - [1.19.7. Events](#1197-events)
-    - [1.19.8. Event object](#1198-event-object)
-  - [1.20. Babel](#120-babel)
-  - [1.21. Fetch API](#121-fetch-api)
-    - [1.21.1. What is fetch?](#1211-what-is-fetch)
-    - [1.21.2. How it works?](#1212-how-it-works)
-    - [1.21.3. Response headers](#1213-response-headers)
-    - [1.21.4. Request headers](#1214-request-headers)
+  - [1.4. Statements vs. Expressions](#14-statements-vs-expressions)
+    - [1.4.1. Expressions](#141-expressions)
+    - [1.4.2. Statements](#142-statements)
+    - [1.4.3. Summary](#143-summary)
+  - [1.5. Arrow function expressions](#15-arrow-function-expressions)
+    - [1.5.1. Concise syntax](#151-concise-syntax)
+    - [1.5.2. _this_ with Arrow function](#152-this-with-arrow-function)
+  - [1.6. Modern Object Literals - Object initializer](#16-modern-object-literals---object-initializer)
+  - [1.7. Destructuring assignment](#17-destructuring-assignment)
+    - [1.7.1. Object destructuring](#171-object-destructuring)
+    - [1.7.2. Array destructuring](#172-array-destructuring)
+  - [1.8. Spread \& Rest](#18-spread--rest)
+    - [1.8.1. Rest syntax](#181-rest-syntax)
+    - [1.8.2. Spread Syntax](#182-spread-syntax)
+  - [1.9. Template literals (Template strings)](#19-template-literals-template-strings)
+    - [1.9.1. Multiline strings](#191-multiline-strings)
+    - [1.9.2. Embedding javascript expression (Expression interpolation)](#192-embedding-javascript-expression-expression-interpolation)
+  - [1.10. Classes](#110-classes)
+  - [1.11. Callback, Promise and Async/Await](#111-callback-promise-and-asyncawait)
+    - [1.11.1. Callback](#1111-callback)
+    - [1.11.2. Promise](#1112-promise)
+    - [1.11.3. Async \& Await](#1113-async--await)
+  - [1.12. JavaScript modules (ES Modules)](#112-javascript-modules-es-modules)
+    - [1.12.1. export](#1121-export)
+    - [1.12.2. Named exports](#1122-named-exports)
+    - [1.12.3. Default exports](#1123-default-exports)
+    - [1.12.4. Combine default + named export](#1124-combine-default--named-export)
+    - [1.12.5. Rename export](#1125-rename-export)
+    - [1.12.6. Rename import](#1126-rename-import)
+    - [1.12.7. Import all](#1127-import-all)
+  - [1.13. The arguments object](#113-the-arguments-object)
+  - [1.14. IIFE](#114-iife)
+  - [1.15. Function as First-Class citizen (first-class objects)](#115-function-as-first-class-citizen-first-class-objects)
+  - [1.16. Defaults parameter](#116-defaults-parameter)
+  - [1.17. Ternary operator](#117-ternary-operator)
+  - [1.18. Higher Order Functions (HOF)](#118-higher-order-functions-hof)
+    - [1.18.1. HOF - returning a fn](#1181-hof---returning-a-fn)
+    - [1.18.2. HOF - taking fn as an argument](#1182-hof---taking-fn-as-an-argument)
+  - [1.19. Array Methods (map, filter, find, includes)](#119-array-methods-map-filter-find-includes)
+  - [1.20. The DOM \& Events](#120-the-dom--events)
+    - [1.20.1. Intro](#1201-intro)
+    - [1.20.2. Window](#1202-window)
+    - [1.20.3. Document](#1203-document)
+    - [1.20.4. Navigator](#1204-navigator)
+    - [1.20.5. Selecting nodes - DOM selection/traversing](#1205-selecting-nodes---dom-selectiontraversing)
+    - [1.20.6. Editing nodes](#1206-editing-nodes)
+    - [1.20.7. Creating and appending nodes - Creating HTML](#1207-creating-and-appending-nodes---creating-html)
+    - [1.20.8. Events](#1208-events)
+    - [1.20.9. Event object](#1209-event-object)
+  - [1.21. Babel](#121-babel)
+  - [1.22. Fetch API](#122-fetch-api)
+    - [1.22.1. What is fetch?](#1221-what-is-fetch)
+    - [1.22.2. How it works?](#1222-how-it-works)
+    - [1.22.3. Response headers](#1223-response-headers)
+    - [1.22.4. Request headers](#1224-request-headers)
 - [2. An Intro](#2-an-intro)
   - [2.1. Composition](#21-composition)
   - [2.2. Unidirectional Dataflow](#22-unidirectional-dataflow)
@@ -209,6 +214,10 @@
 
 ## 1. Essential JavaScript
 
+React library makes use of numerous modern JavaScript capabilities, such as **array or object destructing** and **rest/spread syntax** etc.
+
+Knowing all these new javascript capabilities will make us better React developers and also help us distinction between what's React library adding it to our code and what comes with JavaScript already.
+
 ### 1.1. Scopes - var, let & const
 
 JavaScript has lexical (also called static or physical) scoping and closures. This means you can tell the scope of an identifier by looking at the source code.
@@ -329,14 +338,91 @@ A lot of code here...
 todosCount; // might have changed;
 ```
 
-### 1.4. Arrow function expressions
+### 1.4. Statements vs. Expressions
+
+When working with React, we're allowed to put expressions in our JSX, but we're not allowed to put statements. But why, lets understand the reason behind it.
+
+#### 1.4.1. Expressions
+
+An expression is a bit of JavaScript code that resolves to a value or evaluates to value or produces a value.
+
+For example, these are all expressions:
+
+```md
+5 → produces 5
+(1 + 2) * 2 → produces 6
+"hi" → produces "hi"
+1 * 10 → produces 10
+num > 3 → produces either true or false
+isDone ? "🙂" : "🙁" → produces an emoji
+[1, 2, 3].pop() → produces the number 3
+```
+
+#### 1.4.2. Statements
+
+A JavaScript program is made up of statements. Each statement is an instruction to the computer to do a particular thing.
+
+Statements don't produce a value
+
+Here are some examples of statements in JavaScript:
+
+```js
+let hi = 5;
+
+if (hi > 10) {
+  // More statements here
+}
+
+for (let index = 0; index < 10; index++) {
+  // More statements here
+}
+
+throw new Error('Something went wrong');
+```
+
+**statements** are the syntax/structure that holds our program together, while **expressions** fill in the details.
+
+For example, declaring a variable has an expression slot:
+
+```js
+let hi = /* some expression or lets call it expression slot */;
+```
+
+We can use any of the expressions we saw earlier in that slot:
+
+```md
+let y = 5;
+let y = (1 + 2) * 2;
+let y = "hi";
+let y = 1 * 10;
+let y = num > 3;
+let y = isDone ? "🙂" : "🙁";
+let y = [1, 2, 3].pop()
+```
+
+Also, we can notice expressions are assignable to a variable.
+
+Want to know whether a chunk of JS is an expression or a statement? Try to log it out!
+
+`console.log(/* Some chunk of JS here */);`
+
+If it runs, the code is an expression. If we get an error, it's a statement (or, possibly, invalid JS).
+
+This works because all **function arguments must be expressions**. Expressions produce a value, and that value will be passed into the function. Statements don't produce a value, and so they can't be used as function arguments.
+
+#### 1.4.3. Summary
+
+1. **Expressions** produce a value or resolve to a value or evaluates to a value. We can log them, assign them to variables, or pass them to functions. We can put expressions in whenever we see an expression slot.
+2. **Statements** are instructions to do a particular thing, like declaring a variable or running a loop. We can only place statements in very specific places.
+
+### 1.5. Arrow function expressions
 
 Why arrow function?
 
 1. Concise syntax
 2. The way it manages the **this** inside of it
 
-#### 1.4.1. Concise syntax
+#### 1.5.1. Concise syntax
 
 Function declaration
 
@@ -370,7 +456,7 @@ const add = (x, y) => x + y;
 
 > Arrows functions are anonymous
 
-#### 1.4.2. _this_ with Arrow function
+#### 1.5.2. _this_ with Arrow function
 
 In JavaScript, there are 4 ways you can invoke a regular function.
 
@@ -444,7 +530,7 @@ myObject.myMethod([1, 2, 3]);
 
 > change the callback to regular function declaration, see the output and why is that out put?
 
-### 1.5. Modern Object Literals - Object initializer
+### 1.6. Modern Object Literals - Object initializer
 
 ```js
 const name = "fullName";
@@ -461,11 +547,11 @@ const ModernObj = {
 };
 ```
 
-### 1.6. Destructuring assignment
+### 1.7. Destructuring assignment
 
 The destructuring assignment syntax is a JavaScript expression that makes it possible to **unpack** values from arrays, or properties from objects, into distinct variables.
 
-#### 1.6.1. Object destructuring
+#### 1.7.1. Object destructuring
 
 ```js
 const user = {
@@ -485,7 +571,7 @@ function userId({ id }) {
 userId(user);
 ```
 
-#### 1.6.2. Array destructuring
+#### 1.7.2. Array destructuring
 
 ```js
 const foo = ["one", "two", "three"];
@@ -514,9 +600,9 @@ const [a, , b] = [1, 2, 3];
 // b = 3
 ```
 
-### 1.7. Spread & Rest
+### 1.8. Spread & Rest
 
-#### 1.7.1. Rest syntax
+#### 1.8.1. Rest syntax
 
 This collects multiple elements and "condenses" them into a single element.
 
@@ -544,7 +630,7 @@ console.log(temp1, temp1, person);
 // 002 002 { firstName: 'James', lastName: 'Bond' }
 ```
 
-#### 1.7.2. Spread Syntax
+#### 1.8.2. Spread Syntax
 
 Spread syntax (...) allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.
 
@@ -576,11 +662,11 @@ const newObject = {
 };
 ```
 
-### 1.8. Template literals (Template strings)
+### 1.9. Template literals (Template strings)
 
 Template literals are literals delimited with **backtick (`)**, allowing embedded expressions called substitutions.
 
-#### 1.8.1. Multiline strings
+#### 1.9.1. Multiline strings
 
 (old way)
 
@@ -595,7 +681,7 @@ console.log(`string text line 1
 string text line 2`);
 ```
 
-#### 1.8.2. Embedding javascript expression (Expression interpolation)
+#### 1.9.2. Embedding javascript expression (Expression interpolation)
 
 ```js
 let a = 5;
@@ -619,7 +705,7 @@ console.info(html);
 // </div>
 ```
 
-### 1.9. Classes
+### 1.10. Classes
 
 Classes are a template for creating objects. They encapsulate data with code (method) to work on that data.
 
@@ -672,13 +758,13 @@ o2.greet(); // Hello Bond Jr. 1 from 1st Grade
 o3.greet(); // I am special!
 ```
 
-### 1.10. Callback, Promise and Async/Await
+### 1.11. Callback, Promise and Async/Await
 
 By default, JavaScript synchronous.
 
 In JavaScript, we can code async tasks in 3 ways.
 
-#### 1.10.1. Callback
+#### 1.11.1. Callback
 
 When an async operation had been completed, a callback function (meaning call me back when the operation has been completed) is executed.  
 A function that Node or Browser will “call back” at a later point in the time of a program.
@@ -694,7 +780,7 @@ asyncOperation(params, callbackFunction);
 
 But as soon as you handle multiple async operations, the callback functions nest into each other ending in **callback hell**.
 
-#### 1.10.2. Promise
+#### 1.11.2. Promise
 
 A promise is a placeholder object for the results of an async task. With the use of promises, we can handle the async operations easier.
 
@@ -707,7 +793,7 @@ promise.then((result) => {
 
 Problem is chains of promises.then().then()...then()...
 
-#### 1.10.3. Async & Await
+#### 1.11.3. Async & Await
 
 The async/await syntax (starting ES2017). It lets us write async code in a concise and sync manner
 
@@ -781,9 +867,9 @@ console.log(getData()); // Promise {<fulfilled>: 1}
 console.log(await getData()); // 1
 ```
 
-### 1.11. JavaScript modules (ES Modules)
+### 1.12. JavaScript modules (ES Modules)
 
-#### 1.11.1. export
+#### 1.12.1. export
 
 The **export** statement is used when creating JavaScript modules to export functions, objects, or primitive values from the module so they can be used by other programs with the **import** statement.
 
@@ -792,7 +878,7 @@ There are two types of exports:
 1. Named Exports (Zero or more exports per module)
 2. Default Exports (One per module)
 
-#### 1.11.2. Named exports
+#### 1.12.2. Named exports
 
 ```js
 // prodEnv.js
@@ -807,7 +893,7 @@ import { jwtKey } from "./prodEnv";
 - Import and export name should be the same.
 - Importing requires `{}`.
 
-#### 1.11.3. Default exports
+#### 1.12.3. Default exports
 
 ```js
 // prodEnv.js
@@ -828,7 +914,7 @@ const { key, port } = configObj;
 - Import name can be anything.
 - Importing does not require {}.
 
-#### 1.11.4. Combine default + named export
+#### 1.12.4. Combine default + named export
 
 ```js
 // config.js
@@ -855,7 +941,7 @@ import { envType }, environment from './config.js';
 - Rules about number of exports and naming conventions apply as before.
 - Import rules apply as before, can be mixed if necessary.
 
-#### 1.11.5. Rename export
+#### 1.12.5. Rename export
 
 ```js
 // config.js
@@ -870,7 +956,7 @@ import { authKey } from "./config.js";
 - Named exports can make use of the `as` keyword to rename an export.
 - Import name should be the same as the renamed export.
 
-#### 1.11.6. Rename import
+#### 1.12.6. Rename import
 
 ```js
 // config.js
@@ -883,7 +969,7 @@ import { key as authKey } from "./config.js";
 - Named imports can make use of the `as` keyword to rename an import.
 - Import name (before the as keyword) should be the same as the export.
 
-#### 1.11.7. Import all
+#### 1.12.7. Import all
 
 index.html
 
@@ -927,7 +1013,7 @@ console.log(env);
 > Module(file) extensions are mandatory in plain ES Modules.  
 > In Node.js or JS with few build tools, it is optional to mention file extensions.
 
-### 1.12. The arguments object
+### 1.13. The arguments object
 
 **arguments** is an Array-like local object accessible inside functions that contains the values of the arguments passed to that function.
 
@@ -941,7 +1027,7 @@ add(1, 2, 3);
 // [Arguments] { '0': 1, '1': 2, '2': 3 }
 ```
 
-### 1.13. IIFE
+### 1.14. IIFE
 
 An IIFE (**I**mmediately **I**nvoked **F**unction **E**xpression) is a JavaScript function that runs as soon as it is defined.
 
@@ -1013,7 +1099,7 @@ Using IIFE, we can solve this problem
 > IIFE can use normal, arrow or anonymous function.  
 > IIFE now days are not being used more as ES Modules solves the JS's global scope issues.
 
-### 1.14. Function as First-Class citizen (first-class objects)
+### 1.15. Function as First-Class citizen (first-class objects)
 
 An object that supports all of the operations generally allowed to other objects or types.  
 So what are these operations? Generally, first-class objects can:
@@ -1026,7 +1112,7 @@ So what are these operations? Generally, first-class objects can:
 
 > A higher-order function is one that either has a function as a parameter, or returns a function. ex, map filter etc.
 
-### 1.15. Defaults parameter
+### 1.16. Defaults parameter
 
 Default function parameters allow named parameters to be initialized with default values if **no value or undefined** is passed.
 
@@ -1039,7 +1125,7 @@ console.log(multiply(5, 2)); // 10
 console.log(multiply(5)); // 5
 ```
 
-### 1.16. Ternary operator
+### 1.17. Ternary operator
 
 ```js
 condition ? exprIfTrue : exprIfFalse;
@@ -1062,13 +1148,13 @@ let tResult = age === 18 ? "can vote" : "ya ain't";
 console.log(tResult); // can vote
 ```
 
-### 1.17. Higher Order Functions (HOF)
+### 1.18. Higher Order Functions (HOF)
 
 Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions.
 
 Main benefit is reusability of actions (behavior/logic), not just values.
 
-#### 1.17.1. HOF - returning a fn
+#### 1.18.1. HOF - returning a fn
 
 ```js
 function greaterThan(n) {
@@ -1079,7 +1165,7 @@ console.log(greaterThan10(11));
 // true
 ```
 
-#### 1.17.2. HOF - taking fn as an argument
+#### 1.18.2. HOF - taking fn as an argument
 
 ```js
 function isPromotable(exp) {
@@ -1098,7 +1184,7 @@ promote(8, isPromotable); // Next time
 
 > The built-in HOFs are map, filter, forEach etc.
 
-### 1.18. Array Methods (map, filter, find, includes)
+### 1.19. Array Methods (map, filter, find, includes)
 
 ```js
 // The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
@@ -1132,15 +1218,16 @@ console.log(girl);
 // 👩
 ```
 
-### 1.19. The DOM & Events
+### 1.20. The DOM & Events
 
-#### 1.19.1. Intro
+#### 1.20.1. Intro
 
 - When we write HTML and view it in the browser, the browser turns the HTML into something that is called the **Document Object Model** or **the DOM**.
 - Whatever we see **Elements** tab in the Chrome browsers developers tools is what DOM.
 - The DOM is represented in a tree that looks very much like HTML.
 - Browser allows us to interface with the DOM via JavaScript.
 - The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content.
+- Each HTML element or tags in the called are called DOM node or simply node.
 
 Using JavaScript, interact with DOM and we can
 
@@ -1149,7 +1236,7 @@ Using JavaScript, interact with DOM and we can
 - add and remove CSS classes from elements which can trigger animations.
 - We can play music and video.
 
-#### 1.19.2. Window
+#### 1.20.2. Window
 
 - The Window interface represents a window containing a DOM document; the document property points to the DOM document loaded in that window.
 - A global variable, `window`, representing the window in which the script is running, is exposed to JavaScript code.
@@ -1163,9 +1250,9 @@ window.innerHeight;
 innerWidth;
 ```
 
-#### 1.19.3. Document
+#### 1.20.3. Document
 
-`window` as everything about the currently opened window like browser bar, the tabs, scroll bar.
+`window` as everything about the currently opened window like browser bar, the tabs, scroll bar. It represents whole browser window, hence the name `window`.
 
 `document` is only just about current tab's DOM representation.
 
@@ -1175,7 +1262,7 @@ document.body;
 document.head;
 ```
 
-#### 1.19.4. Navigator
+#### 1.20.4. Navigator
 
 This stores the info about browser meta data and device that it is on. Things such as web cam and audio access, battery level, GPS coordinates.
 
@@ -1185,31 +1272,59 @@ window.navigator;
 
 All the interesting things can be done from browser is documented here `https://whatwebcando.today/`
 
-#### 1.19.5. DOM selection/traversing
+#### 1.20.5. Selecting nodes - DOM selection/traversing
+
+Let's say we want to grab a reference to an HTML element that already exists on the page.
+
+We can do this with the `querySelector` method:
 
 Ex-1,
 
 ```js
-const p = document.querySelector("p"); // will give you the first matching one
-const divs = document.querySelectorAll("div"); // will give you multiple elements
+const body = document.querySelector('body'); // Grab the <body> tag, will give you the first matching one
+const p = document.querySelector("p"); // Grab the <p> tag, will give you the first matching one
+console.log(body);
 console.log(p);
-console.log(divs);
 ```
 
+- The `querySelector` uses CSS selectors like `.some-class` and `#some-id`.
+- If `querySelector` can't find a matching element, it'll return `null`.
+
+Sometimes, multiple elements on the page will match the provided query. `querySelector` will grab the very first one it finds.
+
+There's another method, `querySelectorAll`, which will collect an array-like object of all the matched elements.
+
 Ex-2,
+
+```js
+const lists = document.querySelectorAll("div"); // will give you multiple elements
+console.log(lists);
+```
+
+Once we've captured a reference to a DOM node, we can do a bunch of stuff with it. Let's examine some of the operations at our disposal.
+
+#### 1.20.6. Editing nodes
+
+Ex-1,
+
+Let's say, we want to change the text within of a header `h2`
 
 index.html
 
 ```html
 <h2>Hi</h2>
 <script>
-  const h2 = document.querySelector("h2");
-  console.log(h2.textContent);
-  h2.textContent = "Hello";
+  const h2Node = document.querySelector("h2");
+  console.log(h2Node.textContent);
+  h2Node.textContent = "Hello";
 </script>
 ```
 
-Ex-3,
+`textContent` is a writeable property, not a method. Instead of calling it as a function, we re-assign its value to the text content we want to include.
+
+Ex-2,
+
+Here, we are grabbing the `h2` element and assigning the CSS class to its `className` attribute.
 
 ```html
 <h2>Hi</h2>
@@ -1224,9 +1339,53 @@ Ex-3,
 </script>
 ```
 
-> Use `classList` to work multiple classes
+> 1. `h2ele.setAttribute('class',"active")`, elements `setAttribute` method also can be used to set any attribute value.  
+> 2. Use `classList` to work multiple classes
 
-#### 1.19.6. Creating HTML
+#### 1.20.7. Creating and appending nodes - Creating HTML
+
+let's talk about creating brand-new DOM nodes from scratch now.
+
+We can do that using the `document.createElement`:
+
+```js
+const element = document.createElement('div');
+```
+
+The `createElement` takes 1 parameter, which serves as the tag to be created. We can pass any valid HTML tag (eg. `a`, `ul`, `footer`).
+
+A newly-created element has no attributes and no content. We can enhance it using the methods and tools we've seen so far.
+
+Ex-1:
+
+index.html
+
+```js
+const element = document.createElement('div');
+
+element.setAttribute('style', 'color: red;');
+element.innerText = "Hello world!";
+```
+
+We've created an element, but we don't see it anywhere on the page!???. The reason for this is that while we've created a DOM node, we haven't attached it anywhere.
+
+We can fix this with the `appendChild` method:
+
+index.html
+
+```js
+const element = document.createElement('div');
+
+element.setAttribute('style', 'color: red;');
+element.innerText = "Hello world!";
+
+const body = document.querySelector('body');
+body.appendChild(element);
+```
+
+In order for a DOM node to be visible to the user, it needs to be within the `<body>` tag. The user won't see any HTML tags in other parts of the page. And so when we create an element, it's associated with the document, but it won't be visible until we append it somewhere within the `<body>`.
+
+Ex-2,
 
 index.html
 
@@ -1234,19 +1393,19 @@ index.html
 <body></body>
 <script>
   // Creating an element and adding attributes to it
-  const divy = document.createElement("div");
-  divy.textContent = "I am a divy";
-  divy.classList.add("active");
-  console.log(divy);
+  const divElement = document.createElement("div");
+  divElement.textContent = "I am a div";
+  divElement.classList.add("active");
+  console.log(divElement);
 
-  const imageE = document.createElement("img");
-  imageE.src = "https://picsum.photos/200/300";
-  imageE.alt = "A photo";
-  console.log(imageE);
+  const imageElement = document.createElement("img");
+  imageElement.src = "https://picsum.photos/200/300";
+  imageElement.alt = "A photo";
+  console.log(imageElement);
 
-  // adding the elements to DOM
-  document.body.appendChild(divy);
-  divy.appendChild(imageE);
+  // adding or attaching the nodes or elements to DOM
+  document.body.appendChild(divElement);
+  divElement.appendChild(imageE);
 </script>
 ```
 
@@ -1254,11 +1413,13 @@ Check the browser's Element tab,
 
 ```html
 <d class="active">
-  I am a divy <img src="https://picsum.photos/200/300" alt="A photo" />
+  I am a div <img src="https://picsum.photos/200/300" alt="A photo" />
 </d>
 ```
 
-#### 1.19.7. Events
+> Most of the methods we've seen, like `querySelector` and `appendChild`, can be called on any DOM node. `createElement` is different: it can only be called on the `document` object.
+
+#### 1.20.8. Events
 
 - **DOM Elements**, things that are on the page, they emit events for things like when they are clicked, hovered, dragged, they will fire off events when they are interacted with.
 - We can use **event listeners** to listen for when these things happen and react to them.
@@ -1297,7 +1458,7 @@ Equivalent code,
 </script>
 ```
 
-#### 1.19.8. Event object
+#### 1.20.9. Event object
 
 - The Event interface represents an event which takes place in the DOM.
 - It stores information about what happens when an event fires, who fired it, what is the event etc.
@@ -1334,7 +1495,7 @@ How to stop the default behavior of an element?
 
 Note: uncomment the line and find the difference, when clicking on button
 
-### 1.20. Babel
+### 1.21. Babel
 
 Babel is a JavaScript compiler/transpiler.
 
@@ -1376,9 +1537,9 @@ Usage,
 
 > Installation guide - `https://babeljs.io/setup#installation`
 
-### 1.21. Fetch API
+### 1.22. Fetch API
 
-#### 1.21.1. What is fetch?
+#### 1.22.1. What is fetch?
 
 - The **Fetch API** provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline, such as requests and responses.
 - It also provides a global `fetch()` method that provides an easy, logical way to fetch resources asynchronously across the network.
@@ -1393,7 +1554,7 @@ let promise = fetch(url, [options]);
 - _url_ – the URL to access.
 - _options_ – optional parameters: method, headers etc.
 
-#### 1.21.2. How it works?
+#### 1.22.2. How it works?
 
 Ex-1,
 
@@ -1445,7 +1606,7 @@ fetch(`https://jsonplaceholder.typicode.com/todos/1`)
   });
 ```
 
-#### 1.21.3. Response headers
+#### 1.22.3. Response headers
 
 ```js
 const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
@@ -1463,7 +1624,7 @@ for (let [key, value] of response.headers) {
 // pragma = no-cache
 ```
 
-#### 1.21.4. Request headers
+#### 1.22.4. Request headers
 
 To set a request header in fetch, we can use the `headers` option.
 
