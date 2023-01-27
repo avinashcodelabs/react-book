@@ -1,4 +1,4 @@
-![react-logo](assets/cover-page.jpg)
+![react-logo](assets/cover-page.jpg) <!-- markdownlint-disable-line -->
 
 ---
 
@@ -179,31 +179,31 @@
   - [23.15. Auth pattern for protected Routes](#2315-auth-pattern-for-protected-routes)
   - [23.16. Route based Code Splitting](#2316-route-based-code-splitting)
 - [24. Testing](#24-testing)
-  - [24.1 Tools and definitions](#241-tools-and-definitions)
-  - [24.2 Jest vs RTL](#242-jest-vs-rtl)
-  - [24.3 First test case](#243-first-test-case)
-  - [24.4 RTL's methods for finding elements](#244-rtls-methods-for-finding-elements)
-  - [24.5 RTL's way to simulate DOM events](#245-rtls-way-to-simulate-dom-events)
+  - [24.1. 24.1 Tools and terminologies](#241-241-tools-and-terminologies)
+  - [24.2. 24.2 Jest vs RTL](#242-242-jest-vs-rtl)
+  - [24.3. 24.3 First test case](#243-243-first-test-case)
+  - [24.4. 24.4 RTL's methods for finding elements](#244-244-rtls-methods-for-finding-elements)
+  - [24.5. 24.5 RTL's way to simulate DOM events](#245-245-rtls-way-to-simulate-dom-events)
 - [25. Class Components](#25-class-components)
-  - [25.1 Define class components](#251-define-class-components)
-  - [25.2 Props with class components](#252-props-with-class-components)
-  - [25.2 Adding state in class components](#252-adding-state-in-class-components)
-  - [25.2 Updating state in class components](#252-updating-state-in-class-components)
-  - [25.3 The Component Lifecycle](#253-the-component-lifecycle)
-    - [25.3.1 Mounting](#2531-mounting)
-    - [25.3.2 Updating](#2532-updating)
-    - [25.3.3 Unmounting](#2533-unmounting)
-    - [25.3.4 Summary](#2534-summary)
+  - [25.1. 25.1 Define class components](#251-251-define-class-components)
+  - [25.2. 25.2 Props with class components](#252-252-props-with-class-components)
+  - [25.3. 25.2 Adding state in class components](#253-252-adding-state-in-class-components)
+  - [25.4. 25.2 Updating state in class components](#254-252-updating-state-in-class-components)
+  - [25.5. 25.3 The Component Lifecycle](#255-253-the-component-lifecycle)
+    - [25.5.1. 25.3.1 Mounting](#2551-2531-mounting)
+    - [25.5.2. 25.3.2 Updating](#2552-2532-updating)
+    - [25.5.3. 25.3.3 Unmounting](#2553-2533-unmounting)
+    - [25.5.4. 25.3.4 Summary](#2554-2534-summary)
 - [26. Error Handling](#26-error-handling)
-  - [26.1 The error](#261-the-error)
-  - [26.2 Try Catch](#262-try-catch)
-  - [26.3 getDerivedStateFromError](#263-getderivedstatefromerror)
-  - [26.4 componentDidCatch](#264-componentdidcatch)
+  - [26.1. 26.1 The error](#261-261-the-error)
+  - [26.2. 26.2 Try Catch](#262-262-try-catch)
+  - [26.3. 26.3 getDerivedStateFromError](#263-263-getderivedstatefromerror)
+  - [26.4. 26.4 componentDidCatch](#264-264-componentdidcatch)
 - [27. State management with Redux](#27-state-management-with-redux)
-  - [27.1 Single source of truth](#271-single-source-of-truth)
-  - [27.2 State is read-only](#272-state-is-read-only)
-  - [27.3 Changes are made with pure functions](#273-changes-are-made-with-pure-functions)
-  - [27.4 An example, React with Redux](#274-an-example-react-with-redux)
+  - [27.1. 27.1 Single source of truth](#271-271-single-source-of-truth)
+  - [27.2. 27.2 State is read-only](#272-272-state-is-read-only)
+  - [27.3. 27.3 Changes are made with pure functions](#273-273-changes-are-made-with-pure-functions)
+  - [27.4. 27.4 An example, React with Redux](#274-274-an-example-react-with-redux)
 
 ---
 
@@ -6709,7 +6709,7 @@ Anytime we pass data along via the `state` prop, that data will be available on 
 
 ### 23.7. URL Parameters
 
-URL Parameters allow us to declare *placeholders* for portions of a URL.  
+URL Parameters allow us to declare **placeholders** for portions of a URL.  
 Ex, `https://www.netflix.com/in/title/81497215`
 
 This can represented through the routing like, `https://www.netflix.com/in/title/{this part is placeholder - id}`
@@ -7473,19 +7473,21 @@ We can place the `Suspense` component anywhere above the lazy component. We can 
 
 ## 24. Testing
 
-### 24.1 Tools and definitions
+### 24.1. 24.1 Tools and terminologies
+
 - **Testing** is checking or validating or verifying the correctness.
 - **Unit Test** is testing the individual units or components of the software. A unit might be an individual function, method, module, or object. A unit test isolates a section of code and verifies its correctness.
 - **Component Test** -  React applications are made up of several components, so component testing deals with testing these components individually.
 - **Jest** is a JavaScript testing framework or test runner that allows developers to run tests on JavaScript applications.
 - **React Testing Library (RTL)** is a JavaScript testing utility built specifically to test React components. It simulates user interactions on isolated components and asserts their outputs to ensure the UI is behaving correctly.
 
-### 24.2 Jest vs RTL
+### 24.2. 24.2 Jest vs RTL
+
 - Jest is a test runner that finds tests, runs the tests, and determines whether the tests passed or failed. Additionally, Jest offers functions for test suites, test cases, and assertions.
 - React Testing Library provides fake DOM for rendering and  testing React components.
 - Whenever we run tests without a web browser, we need a virtual/fake/mock DOM to render the app, interact with the elements, and observe if the virtual DOM behaves like it should (like changing the width of a div on a button click).
   
-### 24.3 First test case
+### 24.3. 24.3 First test case
 
 `create-react-app` (CRA) uses both **Jest** and **React Testing Library** by default.
 
@@ -7533,13 +7535,14 @@ test("renders learn react link", () => {
   expect(linkElement).toBeInTheDocument();
 });
 ```
+
 Run the app using `npm run test` then we will see below output at terminal.
 
 ![testing-default-appjs](assets/testing-default-appjs.png)
 
 - RTL's `render` method to virtually render the `App` component imported from `App.js` file and append it to the `document.body` node.
 - We can access the rendered HTML through the RTL's `screen` object.
-- Jest's `expect` and RTL's `toBeInTheDocument` to verify the correctness. 
+- Jest's `expect` and RTL's `toBeInTheDocument` to verify the correctness.
 
 How to see the how and what DOM/HTML generated by RTL ??  
 
@@ -7589,7 +7592,7 @@ test("renders learn react link", () => {
 - The test code will assert whether the link element is available in the document object model or not with the `expect` method from Jest and RTL's `toBeInTheDocument` to verify the correctness.
 - When the link element is not found, Jest will mark the test as **failed**.
 
-### 24.4 RTL's methods for finding elements
+### 24.4. 24.4 RTL's methods for finding elements
 
 RTL has several methods to find an element in DOM by specific attributes.
 
@@ -7623,7 +7626,7 @@ test("<App>", () => {
 });
 ```
 
-### 24.5 RTL's way to simulate DOM events
+### 24.5. 24.5 RTL's way to simulate DOM events
 
 How to test DOM events, such as clicking on a button and typing values into a textbox etc.
 
@@ -7678,7 +7681,7 @@ test("<App>", () => {
 }
 ```
 
-The `user-event` library also has several other methods like `dblClick` for double clicking an element and `type` for typing into a textbox and so on. 
+The `user-event` library also has several other methods like `dblClick` for double clicking an element and `type` for typing into a textbox and so on.
 
 Note:
 
@@ -7688,7 +7691,7 @@ Note:
 
 ## 25. Class Components
 
-### 25.1 Define class components
+### 25.1. 25.1 Define class components
 
 The simplest way to define a class component is to write a ES6 `class`:
 
@@ -7710,7 +7713,7 @@ ReactDOM.createRoot(rootElement).render(<Hello />);
 - It should have a `render()` method returning react elements/JSX.
 - Calling/invoking/creating instances of either the functional or class components in react is same,i.e. `<Hello />`
 
-### 25.2 Props with class components
+### 25.2. 25.2 Props with class components
 
 ```js
 import React from "react";
@@ -7725,6 +7728,7 @@ class Hello extends React.Component {
 const rootElement = document.getElementById("root");
 ReactDOM.createRoot(rootElement).render(<Hello name={"Avinash"} />);
 ```
+
 - In a `class` component, we can get access to props from the props key on the component’s instance `this`.
 - We use `this.props` to access the props passed to the components
 - We call `root.render()` with the `<Hello name={"Avinash"} />` element.
@@ -7732,8 +7736,7 @@ ReactDOM.createRoot(rootElement).render(<Hello name={"Avinash"} />);
 - Our `Hello` component returns a `<h1>Hello, Avinash</h1>` element as the result.
 React DOM efficiently updates the DOM to match `<h1>Hello, Avinash</h1>`.
 
-
-### 25.2 Adding state in class components
+### 25.3. 25.2 Adding state in class components
 
 ```js
 import React from "react";
@@ -7756,9 +7759,9 @@ ReactDOM.createRoot(rootElement).render(<Hello />);
 - To add state to a class component, we’ll use `state` static member of ES6 class spec and isn’t a React specific method.
 - By adding `state` to the component, we can now access it (via `this.state`) anywhere in our class.
 
-### 25.2 Updating state in class components
+### 25.4. 25.2 Updating state in class components
 
-- React has helper method to update the state of a component and re-render the UI. 
+- React has helper method to update the state of a component and re-render the UI.
 - It is called `setState` and it lives on the component’s instance, `this`.
 - It is always immutable update.
 
@@ -7791,13 +7794,13 @@ const rootElement = document.getElementById("root");
 ReactDOM.createRoot(rootElement).render(<Hello />);
 ```
 
-- **NEVER set state like this.state.name= "something".** 
+- **NEVER set state like this.state.name= "something".**
 - Direct mutation not allowed. React will have no idea that the component’s state changed and therefore won’t be able to update the UI.
-- When `this.setState()` invoked, React will update the `name` property on the component’s state to be whatever new name is. 
+- When `this.setState()` invoked, React will update the `name` property on the component’s state to be whatever new name is.
 - Then, because the state changed, React will re-invoke the render method (re-render) and get a new description of the UI based on the new state.
 - Finally, with that new description of the UI, React will update the DOM.
 
-### 25.3 The Component Lifecycle
+### 25.5. 25.3 The Component Lifecycle
 
 Every time a React app runs, all of our components go through a specific lifecycle, we can break down that lifecycle into three parts.
 
@@ -7807,6 +7810,7 @@ Every time a React app runs, all of our components go through a specific lifecyc
 3. When the component gets removed from the DOM (**unmounting**).
 
 Here are the most common things occurs in any typical application (in order in which they occur).
+
 - Set the component’s initial state
 - Render a DOM node (return React elements)
 - Make an Ajax requests/http calls/Network calls
@@ -7814,7 +7818,7 @@ Here are the most common things occurs in any typical application (in order in w
   
 Will see how these are fit into React components lifecycle methods.
 
-#### 25.3.1 Mounting
+#### 25.5.1. 25.3.1 Mounting
 
 ```js
 import React from "react";
@@ -7852,6 +7856,7 @@ const rootElement = document.getElementById("root");
 ReactDOM.createRoot(rootElement).render(<Hello />);
 
 ```
+
 - Set the component’s initial state
   - To set the initial state of the component, we will use `state` static variable
 - Render a DOM node (return React elements)
@@ -7865,6 +7870,7 @@ ReactDOM.createRoot(rootElement).render(<Hello />);
 > Similar to making an Ajax http calls, we can set up any listeners once the component has been mounted to the DOM, i.e., in `componentDidMount`. Why here, because component is already mounted and DOM APIs area available for access.
 >
 > Ex,
+>
 >  ```js
 >   componentDidMount() {
 >      this.timerId = setTimeout(() => {
@@ -7874,7 +7880,7 @@ ReactDOM.createRoot(rootElement).render(<Hello />);
 >    }
 >   ```
 
-#### 25.3.2 Updating
+#### 25.5.2. 25.3.2 Updating
 
 We want to hook into when a component updates its state or receives new data
 via props? For an example,
@@ -7883,11 +7889,11 @@ via props? For an example,
 - Re-fetching data
 - Re-setting a listener
 
-**Re-render**
+##### Re-render <!-- omit in toc -->
 
 It’s important to note that `render` will be invoked not only when the component is first added to the DOM, but also any time after that when its `state` changes (via `setState` ) or when it receives new, updated `props`.
 
-**Re-fetching data**
+##### Re-fetching data <!-- omit in toc -->
 
 `componentDidUpdate` is invoked after the component’s local state changes or after it receives new props - **but it’s not invoked on the initial render**. It’s passed two arguments, the component’s previous props and the component’s previous state.
 
@@ -7998,11 +8004,10 @@ ReactDOM.createRoot(rootElement).render(<Hello></Hello>);
 This allows you to compare the previous props/state to the current props/state so
 you can decide if you need to do anything.
 
-> **Re-setting a Listener or timers**
-> 
+> **Re-setting a Listener or timers**  
 > Similar to re-fetching data, we’d use `componentDidUpdate` to listen for prop/state changes in order to re-set a listener.
 
-#### 25.3.3 Unmounting
+#### 25.5.3. 25.3.3 Unmounting
 
 What should happen when Components gets removed from DOM. Nullify timers, remove event listeners, otherwise memory leaks.
 
@@ -8032,7 +8037,7 @@ const rootElement = document.getElementById("root");
 ReactDOM.createRoot(rootElement).render(<Home></Home>);
 ```
 
-#### 25.3.4 Summary
+#### 25.5.4. 25.3.4 Summary
 
 ```js
 import React from "react";
@@ -8066,13 +8071,14 @@ ReactDOM.createRoot(rootElement).render(<Home></Home>);
 ```
 
 Other less or rarely used lifecycle methods.
+
 - getDerivedStateFromProps
 - shouldComponentUpdate
 - getSnapshotBeforeUpdate
 
 ## 26. Error Handling
 
-### 26.1 The error
+### 26.1. 26.1 The error
 
 This code will produces the blank white scree in the browser giving no clue to user, that what happened?
 
@@ -8092,7 +8098,7 @@ If we open the browser's console, we'll see something like `index.js:5 Uncaught 
 
 Let's handle the error using Try catch.
 
-### 26.2 Try Catch
+### 26.2. 26.2 Try Catch
 
 ```js
 import React from "react";
@@ -8113,11 +8119,12 @@ function Welcome({ name }) {
 const rootElement = document.getElementById("root");
 ReactDOM.createRoot(rootElement).render(<Welcome />);
 ```
+
 This will show the error message in browser's UI - `Cannot read properties of undefined (reading 'toUpperCase')`.
 
 But, but what if I don't want to wrap every component in my app in a try/catch block?
 
-### 26.3 getDerivedStateFromError
+### 26.3. 26.3 getDerivedStateFromError
 
 `static getDerivedStateFromError(error)`
 
@@ -8162,7 +8169,7 @@ ReactDOM.createRoot(rootElement).render(
 
 > Note: `getDerivedStateFromError()` is called during the `render` phase, so side-effects are not permitted. For those use cases, use `componentDidCatch()` instead.
 
-### 26.4 componentDidCatch
+### 26.4. 26.4 componentDidCatch
 
 `componentDidCatch(error, info)`
 
@@ -8173,11 +8180,13 @@ ReactDOM.createRoot(rootElement).render(
 Redux is a predictable state container for JavaScript apps.
 
 Redux can be described in three fundamental principles:
+
 - Single source of truth
 - State is read-only
 - Changes are made with pure functions
 
-### 27.1 Single source of truth
+### 27.1. 27.1 Single source of truth
+
 The global state of your application is stored in an object tree within a single store.
 
 ```js
@@ -8200,7 +8209,8 @@ console.log(store.getState())
 */
 ```
 
-### 27.2 State is read-only
+### 27.2. 27.2 State is read-only
+
 The only way to change the state is to emit an action, an object describing what happened.
 
 ```js
@@ -8215,8 +8225,8 @@ store.dispatch({
 })
 ```
 
+### 27.3. 27.3 Changes are made with pure functions
 
-### 27.3 Changes are made with pure functions
 To specify how the state tree is transformed by actions, you write pure reducers.
 
 ```js
@@ -8258,7 +8268,7 @@ const reducer = combineReducers({ visibilityFilter, todos })
 const store = createStore(reducer)
 ```  
 
-### 27.4 An example, React with Redux
+### 27.4. 27.4 An example, React with Redux
 
 1. `npx create-react-app redux-counter`
 2. `cd redux-counter`
@@ -8310,3 +8320,5 @@ ReactDOM.createRoot(rootElement).render(
   </Provider>
 );
 ```
+
+------------------->
