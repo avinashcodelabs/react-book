@@ -8,61 +8,75 @@
   - [1.1. Scopes - var, let \& const](#11-scopes---var-let--const)
   - [1.2. const](#12-const)
   - [1.3. let](#13-let)
-  - [1.4. Statements vs. Expressions](#14-statements-vs-expressions)
-    - [1.4.1. Expressions](#141-expressions)
-    - [1.4.2. Statements](#142-statements)
-    - [1.4.3. Summary](#143-summary)
-  - [1.5. Arrow function expressions](#15-arrow-function-expressions)
-    - [1.5.1. Concise syntax](#151-concise-syntax)
-    - [1.5.2. _this_ with Arrow function](#152-this-with-arrow-function)
-  - [1.6. Modern Object Literals - Object initializer](#16-modern-object-literals---object-initializer)
-  - [1.7. Destructuring assignment](#17-destructuring-assignment)
-    - [1.7.1. Object destructuring](#171-object-destructuring)
-    - [1.7.2. Array destructuring](#172-array-destructuring)
-  - [1.8. Spread \& Rest](#18-spread--rest)
-    - [1.8.1. Rest syntax](#181-rest-syntax)
-    - [1.8.2. Spread Syntax](#182-spread-syntax)
-  - [1.9. Template literals (Template strings)](#19-template-literals-template-strings)
-    - [1.9.1. Multiline strings](#191-multiline-strings)
-    - [1.9.2. Embedding javascript expression (Expression interpolation)](#192-embedding-javascript-expression-expression-interpolation)
-  - [1.10. Classes](#110-classes)
-  - [1.11. Callback, Promise and Async/Await](#111-callback-promise-and-asyncawait)
-    - [1.11.1. Callback](#1111-callback)
-    - [1.11.2. Promise](#1112-promise)
-    - [1.11.3. Async \& Await](#1113-async--await)
-  - [1.12. JavaScript modules (ES Modules)](#112-javascript-modules-es-modules)
-    - [1.12.1. export](#1121-export)
-    - [1.12.2. Named exports](#1122-named-exports)
-    - [1.12.3. Default exports](#1123-default-exports)
-    - [1.12.4. Combine default + named export](#1124-combine-default--named-export)
-    - [1.12.5. Rename export](#1125-rename-export)
-    - [1.12.6. Rename import](#1126-rename-import)
-    - [1.12.7. Import all](#1127-import-all)
-  - [1.13. The arguments object](#113-the-arguments-object)
-  - [1.14. IIFE](#114-iife)
-  - [1.15. Function as First-Class citizen (first-class objects)](#115-function-as-first-class-citizen-first-class-objects)
-  - [1.16. Defaults parameter](#116-defaults-parameter)
-  - [1.17. Ternary operator](#117-ternary-operator)
-  - [1.18. Higher Order Functions (HOF)](#118-higher-order-functions-hof)
-    - [1.18.1. HOF - returning a fn](#1181-hof---returning-a-fn)
-    - [1.18.2. HOF - taking fn as an argument](#1182-hof---taking-fn-as-an-argument)
-  - [1.19. Array Methods (map, filter, find, includes)](#119-array-methods-map-filter-find-includes)
-  - [1.20. The DOM \& Events](#120-the-dom--events)
-    - [1.20.1. Intro](#1201-intro)
-    - [1.20.2. Window](#1202-window)
-    - [1.20.3. Document](#1203-document)
-    - [1.20.4. Navigator](#1204-navigator)
-    - [1.20.5. Selecting nodes - DOM selection/traversing](#1205-selecting-nodes---dom-selectiontraversing)
-    - [1.20.6. Editing nodes](#1206-editing-nodes)
-    - [1.20.7. Creating and appending nodes - Creating HTML](#1207-creating-and-appending-nodes---creating-html)
-    - [1.20.8. Events](#1208-events)
-    - [1.20.9. Event object](#1209-event-object)
-  - [1.21. Babel](#121-babel)
-  - [1.22. Fetch API](#122-fetch-api)
-    - [1.22.1. What is fetch?](#1221-what-is-fetch)
-    - [1.22.2. How it works?](#1222-how-it-works)
-    - [1.22.3. Response headers](#1223-response-headers)
-    - [1.22.4. Request headers](#1224-request-headers)
+  - [1.4. Truthy and Falsy](#14-truthy-and-falsy)
+  - [1.5. Statements vs. Expressions](#15-statements-vs-expressions)
+    - [1.5.1. Expressions](#151-expressions)
+    - [1.5.2. Statements](#152-statements)
+    - [1.5.3. Summary](#153-summary)
+  - [1.6. Template literals](#16-template-literals)
+    - [1.6.1. Template strings or String Interpolation](#161-template-strings-or-string-interpolation)
+    - [1.6.2. Multiline strings (Template strings or String Interpolation)](#162-multiline-strings-template-strings-or-string-interpolation)
+    - [1.6.3. Embedding javascript expression (Expression interpolation)](#163-embedding-javascript-expression-expression-interpolation)
+  - [1.7. Arrow function expressions](#17-arrow-function-expressions)
+    - [1.7.1. An Intro](#171-an-intro)
+    - [1.7.2. Rules of arrow functions](#172-rules-of-arrow-functions)
+    - [1.7.3. _this_ with Arrow function](#173-this-with-arrow-function)
+    - [1.7.4. Tricky challenge with arrow functions](#174-tricky-challenge-with-arrow-functions)
+  - [1.8. Modern Object Literals - Object initializer](#18-modern-object-literals---object-initializer)
+  - [1.9. Destructuring assignment](#19-destructuring-assignment)
+    - [1.9.1. Object destructuring](#191-object-destructuring)
+      - [1.9.1.1. Renaming extracted values](#1911-renaming-extracted-values)
+      - [1.9.1.2. Default values](#1912-default-values)
+      - [1.9.1.3. Destructuring function parameters](#1913-destructuring-function-parameters)
+    - [1.9.2. Array destructuring](#192-array-destructuring)
+  - [1.10. Spread \& Rest](#110-spread--rest)
+    - [1.10.1. Rest syntax](#1101-rest-syntax)
+    - [1.10.2. Spread Syntax](#1102-spread-syntax)
+  - [1.11. Classes](#111-classes)
+  - [1.12. Callback, Promise and Async/Await](#112-callback-promise-and-asyncawait)
+    - [1.12.1. Callback](#1121-callback)
+    - [1.12.2. Promise](#1122-promise)
+    - [1.12.3. Async \& Await](#1123-async--await)
+  - [1.13. JavaScript Modules (ES Modules)](#113-javascript-modules-es-modules)
+    - [1.13.1. Basics](#1131-basics)
+    - [1.13.2. export](#1132-export)
+    - [1.13.3. Named exports](#1133-named-exports)
+    - [1.13.4. Default exports](#1134-default-exports)
+    - [1.13.5. Combine default + named export](#1135-combine-default--named-export)
+    - [1.13.6. Rename export](#1136-rename-export)
+    - [1.13.7. Rename import](#1137-rename-import)
+    - [1.13.8. Import all](#1138-import-all)
+  - [1.14. The arguments object](#114-the-arguments-object)
+  - [1.15. IIFE](#115-iife)
+  - [1.16. Function as First-Class citizen (first-class objects)](#116-function-as-first-class-citizen-first-class-objects)
+  - [1.17. Defaults parameter](#117-defaults-parameter)
+  - [1.18. Ternary operator](#118-ternary-operator)
+  - [1.19. Higher Order Functions (HOF)](#119-higher-order-functions-hof)
+    - [1.19.1. HOF - returning a fn](#1191-hof---returning-a-fn)
+    - [1.19.2. HOF - taking fn as an argument](#1192-hof---taking-fn-as-an-argument)
+  - [1.20. Array Methods (map, filter, find, includes, forEach)](#120-array-methods-map-filter-find-includes-foreach)
+    - [1.20.1. forEach](#1201-foreach)
+    - [1.20.2. filter](#1202-filter)
+    - [1.20.3. map](#1203-map)
+    - [1.20.4. find](#1204-find)
+    - [1.20.5. includes](#1205-includes)
+    - [1.20.6. join](#1206-join)
+  - [1.21. The DOM \& Events](#121-the-dom--events)
+    - [1.21.1. Intro](#1211-intro)
+    - [1.21.2. Window](#1212-window)
+    - [1.21.3. Document](#1213-document)
+    - [1.21.4. Navigator](#1214-navigator)
+    - [1.21.5. Selecting nodes - DOM selection/traversing](#1215-selecting-nodes---dom-selectiontraversing)
+    - [1.21.6. Editing nodes](#1216-editing-nodes)
+    - [1.21.7. Creating and appending nodes - Creating HTML](#1217-creating-and-appending-nodes---creating-html)
+    - [1.21.8. Events](#1218-events)
+    - [1.21.9. Event object](#1219-event-object)
+  - [1.22. Babel](#122-babel)
+  - [1.23. Fetch API](#123-fetch-api)
+    - [1.23.1. What is fetch?](#1231-what-is-fetch)
+    - [1.23.2. How it works?](#1232-how-it-works)
+    - [1.23.3. Response headers](#1233-response-headers)
+    - [1.23.4. Request headers](#1234-request-headers)
 - [2. An Intro](#2-an-intro)
   - [2.1. Composition](#21-composition)
   - [2.2. Unidirectional Dataflow](#22-unidirectional-dataflow)
@@ -338,11 +352,27 @@ A lot of code here...
 todosCount; // might have changed;
 ```
 
-### 1.4. Statements vs. Expressions
+### 1.4. Truthy and Falsy
+
+Let's consider the following JavaScript statement:
+
+```js
+const user = {
+  name: "Avinash",
+};
+
+if (user.name) {
+  console.log("This user has a name!");
+}
+```
+
+We have a user object, and we want to run a console.log depending on a condition. The condition is the JavaScript expression `user.name`.
+
+### 1.5. Statements vs. Expressions
 
 When working with React, we're allowed to put expressions in our JSX, but we're not allowed to put statements. But why, lets understand the reason behind it.
 
-#### 1.4.1. Expressions
+#### 1.5.1. Expressions
 
 An expression is a bit of JavaScript code that resolves to a value or evaluates to value or produces a value.
 
@@ -358,7 +388,7 @@ isDone ? "🙂" : "🙁" → produces an emoji
 [1, 2, 3].pop() → produces the number 3
 ```
 
-#### 1.4.2. Statements
+#### 1.5.2. Statements
 
 A JavaScript program is made up of statements. Each statement is an instruction to the computer to do a particular thing.
 
@@ -410,21 +440,83 @@ If it runs, the code is an expression. If we get an error, it's a statement (or,
 
 This works because all **function arguments must be expressions**. Expressions produce a value, and that value will be passed into the function. Statements don't produce a value, and so they can't be used as function arguments.
 
-#### 1.4.3. Summary
+#### 1.5.3. Summary
 
 1. **Expressions** produce a value or resolve to a value or evaluates to a value. We can log them, assign them to variables, or pass them to functions. We can put expressions in whenever we see an expression slot.
 2. **Statements** are instructions to do a particular thing, like declaring a variable or running a loop. We can only place statements in very specific places.
 
-### 1.5. Arrow function expressions
+### 1.6. Template literals
 
-Why arrow function?
+Template literals are literals delimited with **backtick (`)**, allowing embedded expressions, multiline strings, string interpolation.
 
-1. Concise syntax
-2. The way it manages the **this** inside of it
+> String interpolation nothing but to create strings by doing substitution of placeholders
 
-#### 1.5.1. Concise syntax
+#### 1.6.1. Template strings or String Interpolation
 
-Function declaration
+In earlier versions of JavaScript, if we wanted to dynamically create strings, we needed to use the addition operator (`+`):
+
+```js
+const lastName = 'C';
+const fullName = 'Avinash ' + lastName + ' !';
+```
+
+This works fine, but it's error prone as we tend forget the space, formatting issue with long concatenation.
+
+Modern JavaScript allows us to **embed variables and other expressions right inside strings**:
+
+```js
+const  = 'C';
+const fullName = `Avinash ${lastName} !`;
+```
+
+Strings created with backticks are known as **template strings**, the operation know as string interpolation.
+
+We create a dynamic segment within our string by writing `${}`. Anything placed between the squiggly brackets will be evaluated as a JavaScript expression.
+
+#### 1.6.2. Multiline strings (Template strings or String Interpolation)
+
+(old way)
+
+```js
+console.log("string text line 1\n" + "string text line 2");
+```
+
+(new way)
+
+```js
+console.log(`string text line 1 
+string text line 2`);
+```
+
+#### 1.6.3. Embedding javascript expression (Expression interpolation)
+
+```js
+let a = 5;
+let b = 10;
+console.log(`Fifteen is ${a + b} and
+not ${2 * a + b}.`);
+// "Fifteen is 15 and
+// not 20."
+```
+
+```js
+const html = `
+  <div>
+    ${new Date()}
+  </div>
+`;
+console.info(html);
+
+// <div>
+//    Thu Dec 23 2021 07:29:09 GMT+0530 (India Standard Time)
+// </div>
+```
+
+### 1.7. Arrow function expressions
+
+#### 1.7.1. An Intro
+
+The below syntax is known as Function declaration
 
 ```js
 function add(x, y) {
@@ -432,7 +524,7 @@ function add(x, y) {
 }
 ```
 
-Function expression
+If we assign the function declaration to a variable, then it is called Function expression
 
 ```js
 const add = function (x, y) {
@@ -440,23 +532,82 @@ const add = function (x, y) {
 };
 ```
 
-Arrow function expression
+So, In JavaScript, functions are usually have been written using the `function` keyword
 
 ```js
-const add = (x, y) => {
-  return x + y;
-};
+function welcome(name) {
+  return "Welcome " + name;
+}
 ```
 
-Arrow function expression with implicit return
+In ES2015 version, JavaScript received an alternative syntax for creating functions: arrow functions.They look like this:
 
 ```js
-const add = (x, y) => x + y;
+const welcome = (name) => "Welcome " + name;
 ```
 
-> Arrows functions are anonymous
+This is also Arrow function expressions as we assign it to a variable.
 
-#### 1.5.2. _this_ with Arrow function
+Now, let's dig into it,
+
+#### 1.7.2. Rules of arrow functions
+
+There are two types of arrow functions: short-form and long-form.
+
+short form:
+
+```js
+const add = n => n + 1;
+```
+
+long form:
+
+```js
+const add = n => {
+  return n + 1;
+}
+```
+
+> 1. The short-form function's body must be a single expression and  It has **implicit return**.  
+> 2. The long-form function's body can contain a number of statements.
+> 3. Arrows functions are anonymous.
+
+Optional parentheses
+
+If an arrow function takes a single parameter, the parentheses are optional:
+
+```js
+// This is valid:
+const logUser = user => {
+  console.log(user);
+}
+
+// This is also valid:
+const logUser = (user) => {
+  console.log(user);
+}
+```
+
+The parentheses are mandatory if we have more than 1 parameter:
+
+```js
+const logUser = (user, isAdmin) => {
+  console.log(user, isAdmin);
+}
+```
+
+The parentheses are also mandatory if we have no parameters:
+
+```js
+const sayHello = () => console.log('Hello!')
+```
+
+Bu why we need arrow functions?
+
+1. As we seen, it has concise syntax over normal functions.
+2. The way it manages the **this** inside of it, is different than normal functions, let see this in action below.
+
+#### 1.7.3. _this_ with Arrow function
 
 In JavaScript, there are 4 ways you can invoke a regular function.
 
@@ -507,6 +658,9 @@ new MyFunction(); // logs an instance of MyFunction => MyFunction {}
 
 - The arrow function doesn't define its own execution context, i.e. **this**.
 - No matter how or where being executed, **this** value inside of an arrow function always equals **this** value from the outer function. In other words, the arrow function resolves this lexically (statically or physically).
+- Since it has no, its own **this**, we can use it as constructor functions.
+- Since it has no, its own **this**, we can't use `arguments` inside it.
+- They don't have their own prototype.
 
 ex,
 
@@ -528,9 +682,31 @@ myObject.myMethod([1, 2, 3]);
 // { myMethod: [Function: myMethod] }
 ```
 
-> change the callback to regular function declaration, see the output and why is that out put?
+> Change the callback to regular function declaration, see the output and why is that out put?
 
-### 1.6. Modern Object Literals - Object initializer
+#### 1.7.4. Tricky challenge with arrow functions
+
+Q. Return an object from arrow function,
+
+```js
+const getUser = () => { name: "avinash"};
+console.log(getUser()); // undefined
+```
+
+Why it returning `undefined` instead of not an object.
+
+A. The pair of curly braces `{}` in JavaScript, used for creating object literal and define a scope or block as well, think `if`, `for` statements for an instance.
+
+In JavaScript, **parentheses** can be added around any expression, to change its evaluation order.
+
+In order to tell JavaScript engine, that, it's an object returning not an scope block `{}`, enclose it in parenthesis `()`.
+
+```js
+const getUser = () => ({ name: "avinash" });
+console.log(getUser()); // { name: "avinash"}
+```
+
+### 1.8. Modern Object Literals - Object initializer
 
 ```js
 const name = "fullName";
@@ -547,11 +723,11 @@ const ModernObj = {
 };
 ```
 
-### 1.7. Destructuring assignment
+### 1.9. Destructuring assignment
 
-The destructuring assignment syntax is a JavaScript expression that makes it possible to **unpack** values from arrays, or properties from objects, into distinct variables.
+The destructuring assignment syntax is a JavaScript expression that makes it possible to **unpack/extract** values from arrays, or properties from objects, into distinct variables.
 
-#### 1.7.1. Object destructuring
+#### 1.9.1. Object destructuring
 
 ```js
 const user = {
@@ -560,6 +736,10 @@ const user = {
 };
 
 const { id, isVerified } = user;
+
+// This is equivalent for above syntax
+const id = user.id;
+const isVerified = user.isVerified;
 
 const { PI, E, SQRT2 } = Math;
 
@@ -571,9 +751,129 @@ function userId({ id }) {
 userId(user);
 ```
 
-#### 1.7.2. Array destructuring
+##### 1.9.1.1. Renaming extracted values
 
 ```js
+const user = {
+  id: 42,
+  isVerified: true,
+};
+
+const { id: userId, isVerified } = user;
+console.log(userId); // 42
+```
+
+##### 1.9.1.2. Default values
+
+Q. what happens if we try to destructure a key from an object which isn't defined?
+
+```js
+const user = {
+  id: 42,
+  isVerified: true,
+};
+
+const { id, isVerified, name} = user;
+console.log(name); // undefined
+```
+
+To fix this, we can assign the default value to a prop,
+
+```js
+const { id, isVerified, name = "avinash" } = user;
+```
+
+If `user.name` is defined, it'll be assigned to the new `name` variable. Otherwise, it'll be set to the string `avinash`.
+
+##### 1.9.1.3. Destructuring function parameters
+
+Normal way,
+
+```js
+function isValidUser(user) {
+  if (typeof user.name !== "string") {
+    return false;
+  }
+
+  if (user.password.length < 12) {
+    return false;
+  }
+
+  return true;
+}
+```
+
+Destructing the parameter, we could destructure these values at the top of the function:
+
+```js
+function isValidUser(user) {
+  const { name, password } = user;
+  if (typeof name !== "string") {
+    return false;
+  }
+
+  if (password.length < 12) {
+    return false;
+  }
+
+  return true;
+}
+```
+
+Using **parameter destructuring**, we can do this destructuring right in the function parameters:
+
+```js
+function isValidUser({ name, password }) {
+  if (typeof name !== "string") {
+    return false;
+  }
+
+  if (password.length < 12) {
+    return false;
+  }
+
+  return true;
+}
+```
+
+> All 3 of these code snippets are equivalent
+
+Default parameter values:
+
+Like with typical object destructuring, we can supply default values to be used for parameters.
+
+```js
+function sendApiRequest({ method = "GET", numOfRetries }) {}
+
+// When I call this function, I can supply my own value for method:
+sendApiRequest({ method: "PUT", numOfRetries: 4 });
+
+// if I want it to be equal to GET, I can omit it entirely:
+
+sendApiRequest({ numOfRetries: 4 });
+```
+
+#### 1.9.2. Array destructuring
+
+Let's say, we have some data that lives in an array, and we want to pluck it out and assign it to a variable.
+
+This has been done by accessing an item by index, and assigning it a value with a typical assignment statement:
+
+```js
+const fruits = ["apple", "banana", "cantaloupe"];
+const firstFruit = fruits[0];
+const secondFruit = fruits[1];
+```
+
+Destructuring assignment offers us a nicer way to accomplish this task:
+
+```js
+
+const fruits = ["apple", "banana", "cantaloupe"];
+const [firstFruit, secondFruit] = fruits; // grab first two items
+
+const [, secondFruit] = fruits; // grab the second item, and not the first
+
 const foo = ["one", "two", "three"];
 
 const [red, yellow, green] = foo;
@@ -600,9 +900,9 @@ const [a, , b] = [1, 2, 3];
 // b = 3
 ```
 
-### 1.8. Spread & Rest
+### 1.10. Spread & Rest
 
-#### 1.8.1. Rest syntax
+#### 1.10.1. Rest syntax
 
 This collects multiple elements and "condenses" them into a single element.
 
@@ -630,7 +930,7 @@ console.log(temp1, temp1, person);
 // 002 002 { firstName: 'James', lastName: 'Bond' }
 ```
 
-#### 1.8.2. Spread Syntax
+#### 1.10.2. Spread Syntax
 
 Spread syntax (...) allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.
 
@@ -662,50 +962,7 @@ const newObject = {
 };
 ```
 
-### 1.9. Template literals (Template strings)
-
-Template literals are literals delimited with **backtick (`)**, allowing embedded expressions called substitutions.
-
-#### 1.9.1. Multiline strings
-
-(old way)
-
-```js
-console.log("string text line 1\n" + "string text line 2");
-```
-
-(new way)
-
-```js
-console.log(`string text line 1 
-string text line 2`);
-```
-
-#### 1.9.2. Embedding javascript expression (Expression interpolation)
-
-```js
-let a = 5;
-let b = 10;
-console.log(`Fifteen is ${a + b} and
-not ${2 * a + b}.`);
-// "Fifteen is 15 and
-// not 20."
-```
-
-```js
-const html = `
-  <div>
-    ${new Date()}
-  </div>
-`;
-console.info(html);
-
-// <div>
-//    Thu Dec 23 2021 07:29:09 GMT+0530 (India Standard Time)
-// </div>
-```
-
-### 1.10. Classes
+### 1.11. Classes
 
 Classes are a template for creating objects. They encapsulate data with code (method) to work on that data.
 
@@ -758,13 +1015,13 @@ o2.greet(); // Hello Bond Jr. 1 from 1st Grade
 o3.greet(); // I am special!
 ```
 
-### 1.11. Callback, Promise and Async/Await
+### 1.12. Callback, Promise and Async/Await
 
 By default, JavaScript synchronous.
 
 In JavaScript, we can code async tasks in 3 ways.
 
-#### 1.11.1. Callback
+#### 1.12.1. Callback
 
 When an async operation had been completed, a callback function (meaning call me back when the operation has been completed) is executed.  
 A function that Node or Browser will “call back” at a later point in the time of a program.
@@ -780,7 +1037,7 @@ asyncOperation(params, callbackFunction);
 
 But as soon as you handle multiple async operations, the callback functions nest into each other ending in **callback hell**.
 
-#### 1.11.2. Promise
+#### 1.12.2. Promise
 
 A promise is a placeholder object for the results of an async task. With the use of promises, we can handle the async operations easier.
 
@@ -793,7 +1050,7 @@ promise.then((result) => {
 
 Problem is chains of promises.then().then()...then()...
 
-#### 1.11.3. Async & Await
+#### 1.12.3. Async & Await
 
 The async/await syntax (starting ES2017). It lets us write async code in a concise and sync manner
 
@@ -867,9 +1124,21 @@ console.log(getData()); // Promise {<fulfilled>: 1}
 console.log(await getData()); // 1
 ```
 
-### 1.12. JavaScript modules (ES Modules)
+### 1.13. JavaScript Modules (ES Modules)
 
-#### 1.12.1. export
+JavaScript had no built-in module system in earlier version of it.
+
+In the early days, we wrote our JavaScript programs in `.js` files, and loaded them all up via `<script>` tags in our HTML files. This worked alright, but it meant that every script shared the same environment; variables declared in one file could be accessed in another. It was a bit of a mess.
+
+As part of ECMA2015, JavaScript got its native module system.
+
+#### 1.13.1. Basics
+
+When we work with a JS module system, every file becomes a **module**. A module is a JavaScript file that can contain one or more **export**s. We can pull the code from one module into another using the **import** statement.
+
+If we don't export a piece of data from one module, it won't be available in any other modules. The only way to share anything between modules is through import/export.
+
+#### 1.13.2. export
 
 The **export** statement is used when creating JavaScript modules to export functions, objects, or primitive values from the module so they can be used by other programs with the **import** statement.
 
@@ -878,7 +1147,9 @@ There are two types of exports:
 1. Named Exports (Zero or more exports per module)
 2. Default Exports (One per module)
 
-#### 1.12.2. Named exports
+#### 1.13.3. Named exports
+
+Each file can define one or more named exports:
 
 ```js
 // prodEnv.js
@@ -890,10 +1161,28 @@ import { jwtKey } from "./prodEnv";
 
 - Named exports use a name.
 - A module can have any number of named exports.
+- `export` keyword to make a piece of data, `jwtKey`, available to other files.
 - Import and export name should be the same.
-- Importing requires `{}`.
+- Importing requires curly braces `{}`.
+- The string at the end, `./prodEnv`, is the path to the module. We're allowed to omit the `.js` suffix, since it's implied.
+- The module system uses a linux-style relative path system to locate modules. A single dot, `.`, refers to the same directory. Two dots, `..`, refers to a parent directory.
 
-#### 1.12.3. Default exports
+#### 1.13.4. Default exports
+
+When it comes to default exports, we always export an expression:
+
+ex-1,
+
+```js
+// ✅ Correct:
+const hi = 5;
+export default hi;
+
+// 🚫 Incorrect
+export default const hi = 10;
+```
+
+Ex-2
 
 ```js
 // prodEnv.js
@@ -911,10 +1200,10 @@ const { key, port } = configObj;
 
 - Default exports expose single default value only, use the **default** keyword.
 - A module can only have one default export.
-- Import name can be anything.
-- Importing does not require {}.
+- When we're importing a default export, we can name it whatever we want; it doesn't have to match.
+- Importing does not require curly braces `{}`.
 
-#### 1.12.4. Combine default + named export
+#### 1.13.5. Combine default + named export
 
 ```js
 // config.js
@@ -941,7 +1230,7 @@ import { envType }, environment from './config.js';
 - Rules about number of exports and naming conventions apply as before.
 - Import rules apply as before, can be mixed if necessary.
 
-#### 1.12.5. Rename export
+#### 1.13.6. Rename export
 
 ```js
 // config.js
@@ -956,7 +1245,9 @@ import { authKey } from "./config.js";
 - Named exports can make use of the `as` keyword to rename an export.
 - Import name should be the same as the renamed export.
 
-#### 1.12.6. Rename import
+#### 1.13.7. Rename import
+
+Sometimes, we'll run into naming collisions with named imports:
 
 ```js
 // config.js
@@ -969,7 +1260,7 @@ import { key as authKey } from "./config.js";
 - Named imports can make use of the `as` keyword to rename an import.
 - Import name (before the as keyword) should be the same as the export.
 
-#### 1.12.7. Import all
+#### 1.13.8. Import all
 
 index.html
 
@@ -1012,8 +1303,9 @@ console.log(env);
 
 > Module(file) extensions are mandatory in plain ES Modules.  
 > In Node.js or JS with few build tools, it is optional to mention file extensions.
+> Every module can have multiple named exports, but only a single default export.
 
-### 1.13. The arguments object
+### 1.14. The arguments object
 
 **arguments** is an Array-like local object accessible inside functions that contains the values of the arguments passed to that function.
 
@@ -1027,7 +1319,7 @@ add(1, 2, 3);
 // [Arguments] { '0': 1, '1': 2, '2': 3 }
 ```
 
-### 1.14. IIFE
+### 1.15. IIFE
 
 An IIFE (**I**mmediately **I**nvoked **F**unction **E**xpression) is a JavaScript function that runs as soon as it is defined.
 
@@ -1099,7 +1391,7 @@ Using IIFE, we can solve this problem
 > IIFE can use normal, arrow or anonymous function.  
 > IIFE now days are not being used more as ES Modules solves the JS's global scope issues.
 
-### 1.15. Function as First-Class citizen (first-class objects)
+### 1.16. Function as First-Class citizen (first-class objects)
 
 An object that supports all of the operations generally allowed to other objects or types.  
 So what are these operations? Generally, first-class objects can:
@@ -1112,7 +1404,7 @@ So what are these operations? Generally, first-class objects can:
 
 > A higher-order function is one that either has a function as a parameter, or returns a function. ex, map filter etc.
 
-### 1.16. Defaults parameter
+### 1.17. Defaults parameter
 
 Default function parameters allow named parameters to be initialized with default values if **no value or undefined** is passed.
 
@@ -1125,7 +1417,7 @@ console.log(multiply(5, 2)); // 10
 console.log(multiply(5)); // 5
 ```
 
-### 1.17. Ternary operator
+### 1.18. Ternary operator
 
 ```js
 condition ? exprIfTrue : exprIfFalse;
@@ -1148,13 +1440,13 @@ let tResult = age === 18 ? "can vote" : "ya ain't";
 console.log(tResult); // can vote
 ```
 
-### 1.18. Higher Order Functions (HOF)
+### 1.19. Higher Order Functions (HOF)
 
 Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions.
 
 Main benefit is reusability of actions (behavior/logic), not just values.
 
-#### 1.18.1. HOF - returning a fn
+#### 1.19.1. HOF - returning a fn
 
 ```js
 function greaterThan(n) {
@@ -1165,7 +1457,7 @@ console.log(greaterThan10(11));
 // true
 ```
 
-#### 1.18.2. HOF - taking fn as an argument
+#### 1.19.2. HOF - taking fn as an argument
 
 ```js
 function isPromotable(exp) {
@@ -1184,43 +1476,214 @@ promote(8, isPromotable); // Next time
 
 > The built-in HOFs are map, filter, forEach etc.
 
-### 1.19. Array Methods (map, filter, find, includes)
+### 1.20. Array Methods (map, filter, find, includes, forEach)
+
+One important difference between React and other UI framework/library is that, others such as Angular, Vue etc uses template/domain language to do the iterations, like `ngFor`, `v-for` respectively.
+
+But in case of React, along with JSX, it uses built-in array methods such as `map`, `filter`, `forEach` etc.
+
+#### 1.20.1. forEach
+
+We use `forEach` when we want to perform some sort of action on every item in an array.
 
 ```js
-// The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
-const hungryMonkeys = ["🐒", "🦍", "🦧"];
-const feededMonkeys = hungryMonkeys.map((m) => m + "🍌");
-console.log(feededMonkeys);
-// ["🐒🍌", "🦍🍌", "🦧🍌"]
+const pizzaToppings = ["cheese", "avocado", "halibut", "custard"];
 
-// The filter() method creates a new array with all elements that pass the test implemented by the provided function.
-const guests = ["👩👨", "👩👩", "👨", "👩", "👨👨"];
-const singles = guests.filter((g) => g.length / 2 === 1); // Single emoji's takes 2 byte
-console.log(singles);
-// ["👨", "👩"]
+pizzaToppings.forEach((topping) => {
+  console.log(topping);
+});
 
-// The includes() method determines whether an array includes a certain value among its entries, returning true or false as appropriate.s
-const food = ["🥦", "🥬", "🍅", "🥒", "🍩", "🥕"];
-const caught = food.includes("🍩");
-console.log(caught);
-// true
-
-// The join() method creates and returns a new string by concatenating all of the elements in an array, separated by commas or a specified separator string.
-const devices = ["💻", "🖥️", "🖥️", "💻", "🖨️"];
-const network = devices.join("〰️");
-console.log(network);
-// "💻〰️🖥️〰️🖥️〰️💻〰️🖨️"
-
-// The find() method returns the value of the first element in the provided array that satisfies the provided testing function. If no values satisfy the testing function, undefined is returned.
-const all = ["👩", "👨"];
-const girl = all.find((a) => a === "👩");
-console.log(girl);
-// 👩
+// cheese
+// avocado
+// halibut
+// custard
 ```
 
-### 1.20. The DOM & Events
+The `forEach` method accepts a function as its argument. This is commonly known as a **callback function**.
 
-#### 1.20.1. Intro
+The term “**allback function** refers to a function that we pass to another function.
+
+We don't call this function ourselves; instead, we pass it as an argument to the forEach method. The JavaScript engine will call this function for us, supplying the topping argument as it iterates over the array.
+
+Accessing the index
+
+The callback we pass to `forEach` takes a second optional parameter:
+
+```js
+const pizzaToppings = ["cheese", "avocado", "halibut", "custard"];
+
+pizzaToppings.forEach((topping, index) => {
+  console.log(index, topping);
+});
+
+// 0 cheese
+// 1 avocado
+// 2 halibut
+// 3 custard
+```
+
+The index is the position in the array of the current item, starting from 0.
+
+#### 1.20.2. filter
+
+In many ways, `filter` is very similar to `forEach`. It takes a callback function, and that callback function will be called once per item in the array.
+
+Unlike `forEach`, however, `filter` **produces a value**. Specifically, it produces a new array which contains a subset of items from the original array.
+
+Ex-1,
+
+```js
+const students = [
+  { name: "Aisha", grade: 89 },
+  { name: "Bruno", grade: 55 },
+  { name: "Carlos", grade: 68 },
+  { name: "Dacian", grade: 71 },
+  { name: "Esther", grade: 40 },
+];
+
+const studentsWhoPassed = students.filter((student) => {
+  return student.grade >= 60;
+});
+
+console.log(studentsWhoPassed);
+/*
+  [
+    { name: 'Aisha', grade: 89 },
+    { name: 'Carlos', grade: 68 },
+    { name: 'Dacian', grade: 71 },
+  ]
+*/
+```
+
+Typically, our callback function should return a boolean value, either `true` or `false`. The `filter` method calls this function once for every item in the array. If the callback returns `true`, this item is included in the new array. Otherwise, it's excluded.
+
+Ex-2,
+
+```js
+const numbers = [5, 12, 15, 31, 40];
+
+const evenNumbers = numbers.filter((num) => {
+  return num % 2 === 0;
+});
+
+console.log(numbers); // Hasn't changed: [5, 12, 15, 31, 40]
+console.log(evenNumbers); // [12, 40]
+```
+
+> The `filter` method doesn't modify the original array. This is true for all of the array methods discussed in this section.
+
+#### 1.20.3. map
+
+This is the most commonly-used array method, when working with React.
+
+In many ways, `map` is quite a lot like `forEach`. We give it a callback function, and it iterates over the array, calling the function once for each item in the array.
+
+The big difference, though: **map produces a brand new array, full of transformed values.**
+
+The `forEach` function will always return `undefined`.
+
+```js
+const numbers = [1, 2, 3];
+const result = numbers.forEach((num) => num + 1);
+console.log(result); // undefined
+```
+
+By contrast, `map` will **collect** all the values we return from our callback, and put them into a new array:
+
+Ex-1,
+
+```js
+const numbers = [1, 2, 3];
+const result = numbers.map((num) => num + 1);
+console.log(result); // [2, 3, 4]
+```
+
+Like `filter`, `map` doesn't mutate the original array; it produces a brand-new array.
+
+Ex-2
+
+```js
+const people = [
+  { name: "Aisha", grade: 89 },
+  { name: "Bruno", grade: 55 },
+  { name: "Carlos", grade: 68 },
+  { name: "Dacian", grade: 71 },
+  { name: "Esther", grade: 40 },
+];
+
+const screamedNames = people.map((person) => {
+  return person.name.toUpperCase();
+});
+
+console.log(screamedNames);
+/*
+  ['AISHA', 'BRUNO', 'CARLOS', 'DACIAN', 'ESTHER']
+*/
+````
+
+Here's a helpful way to think about map: it's exactly like `forEach`, except it **saves** whatever we return from the callback into a new array.
+
+Accessing the index:
+
+Like the other methods we've seen, we can pass a second parameter to access the current item's index:
+
+Ex-3,
+
+```js
+const people = [
+  { name: "Aisha", grade: 89 },
+  { name: "Bruno", grade: 55 },
+  { name: "Carlos", grade: 68 },
+  { name: "Dacian", grade: 71 },
+  { name: "Esther", grade: 40 },
+];
+
+const numberedNames = people.map((person, index) => {
+  return `${index}-${person.name}`;
+});
+
+console.log(numberedNames);
+/*
+  ['0-Aisha', '1-Bruno', '2-Carlos', '3-Dacian', '4-Esther']
+*/
+```
+
+#### 1.20.4. find
+
+The `find` method returns the value of the first element in the provided array that satisfies the provided testing function. If no values satisfy the testing function, undefined is returned.
+
+```js
+const array1 = [5, 12, 8, 130, 44];
+const found = array1.find((element) => element > 10);
+console.log(found); // 12
+```
+
+#### 1.20.5. includes
+
+The `includes` method determines whether an array includes a certain value among its entries, returning true or false as appropriate.
+
+```js
+const pets = ["cat", "dog", "bat"];
+console.log(pets.includes("cat")); // true
+console.log(pets.includes("at")); // false
+```
+
+#### 1.20.6. join
+
+The `join` method creates and returns a new string by concatenating all of the elements in an array, separated by commas or a specified separator string.
+
+```js
+const elements = ["Fire", "Air", "Water"];
+console.log(elements.join()); // "Fire,Air,Water"
+console.log(elements.join("")); // "FireAirWater"
+console.log(elements.join("-")); // "Fire-Air-Water"
+```
+
+The full list of methods available on array are nicely documented in MDN site - `https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array`
+
+### 1.21. The DOM & Events
+
+#### 1.21.1. Intro
 
 - When we write HTML and view it in the browser, the browser turns the HTML into something that is called the **Document Object Model** or **the DOM**.
 - Whatever we see **Elements** tab in the Chrome browsers developers tools is what DOM.
@@ -1236,7 +1699,7 @@ Using JavaScript, interact with DOM and we can
 - add and remove CSS classes from elements which can trigger animations.
 - We can play music and video.
 
-#### 1.20.2. Window
+#### 1.21.2. Window
 
 - The Window interface represents a window containing a DOM document; the document property points to the DOM document loaded in that window.
 - A global variable, `window`, representing the window in which the script is running, is exposed to JavaScript code.
@@ -1250,7 +1713,7 @@ window.innerHeight;
 innerWidth;
 ```
 
-#### 1.20.3. Document
+#### 1.21.3. Document
 
 `window` as everything about the currently opened window like browser bar, the tabs, scroll bar. It represents whole browser window, hence the name `window`.
 
@@ -1262,7 +1725,7 @@ document.body;
 document.head;
 ```
 
-#### 1.20.4. Navigator
+#### 1.21.4. Navigator
 
 This stores the info about browser meta data and device that it is on. Things such as web cam and audio access, battery level, GPS coordinates.
 
@@ -1272,7 +1735,7 @@ window.navigator;
 
 All the interesting things can be done from browser is documented here `https://whatwebcando.today/`
 
-#### 1.20.5. Selecting nodes - DOM selection/traversing
+#### 1.21.5. Selecting nodes - DOM selection/traversing
 
 Let's say we want to grab a reference to an HTML element that already exists on the page.
 
@@ -1303,7 +1766,7 @@ console.log(lists);
 
 Once we've captured a reference to a DOM node, we can do a bunch of stuff with it. Let's examine some of the operations at our disposal.
 
-#### 1.20.6. Editing nodes
+#### 1.21.6. Editing nodes
 
 Ex-1,
 
@@ -1342,7 +1805,7 @@ Here, we are grabbing the `h2` element and assigning the CSS class to its `class
 > 1. `h2ele.setAttribute('class',"active")`, elements `setAttribute` method also can be used to set any attribute value.  
 > 2. Use `classList` to work multiple classes
 
-#### 1.20.7. Creating and appending nodes - Creating HTML
+#### 1.21.7. Creating and appending nodes - Creating HTML
 
 let's talk about creating brand-new DOM nodes from scratch now.
 
@@ -1419,7 +1882,7 @@ Check the browser's Element tab,
 
 > Most of the methods we've seen, like `querySelector` and `appendChild`, can be called on any DOM node. `createElement` is different: it can only be called on the `document` object.
 
-#### 1.20.8. Events
+#### 1.21.8. Events
 
 - **DOM Elements**, things that are on the page, they emit events for things like when they are clicked, hovered, dragged, they will fire off events when they are interacted with.
 - We can use **event listeners** to listen for when these things happen and react to them.
@@ -1458,7 +1921,7 @@ Equivalent code,
 </script>
 ```
 
-#### 1.20.9. Event object
+#### 1.21.9. Event object
 
 - The Event interface represents an event which takes place in the DOM.
 - It stores information about what happens when an event fires, who fired it, what is the event etc.
@@ -1495,7 +1958,7 @@ How to stop the default behavior of an element?
 
 Note: uncomment the line and find the difference, when clicking on button
 
-### 1.21. Babel
+### 1.22. Babel
 
 Babel is a JavaScript compiler/transpiler.
 
@@ -1537,9 +2000,9 @@ Usage,
 
 > Installation guide - `https://babeljs.io/setup#installation`
 
-### 1.22. Fetch API
+### 1.23. Fetch API
 
-#### 1.22.1. What is fetch?
+#### 1.23.1. What is fetch?
 
 - The **Fetch API** provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline, such as requests and responses.
 - It also provides a global `fetch()` method that provides an easy, logical way to fetch resources asynchronously across the network.
@@ -1554,7 +2017,7 @@ let promise = fetch(url, [options]);
 - _url_ – the URL to access.
 - _options_ – optional parameters: method, headers etc.
 
-#### 1.22.2. How it works?
+#### 1.23.2. How it works?
 
 Ex-1,
 
@@ -1606,7 +2069,7 @@ fetch(`https://jsonplaceholder.typicode.com/todos/1`)
   });
 ```
 
-#### 1.22.3. Response headers
+#### 1.23.3. Response headers
 
 ```js
 const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
@@ -1624,7 +2087,7 @@ for (let [key, value] of response.headers) {
 // pragma = no-cache
 ```
 
-#### 1.22.4. Request headers
+#### 1.23.4. Request headers
 
 To set a request header in fetch, we can use the `headers` option.
 
