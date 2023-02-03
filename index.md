@@ -9,6 +9,8 @@
   - [1.2. const](#12-const)
   - [1.3. let](#13-let)
   - [1.4. Truthy and Falsy](#14-truthy-and-falsy)
+    - [1.4.1. Whats Truthy and Falsy](#141-whats-truthy-and-falsy)
+    - [1.4.2.](#142)
   - [1.5. Statements vs. Expressions](#15-statements-vs-expressions)
     - [1.5.1. Expressions](#151-expressions)
     - [1.5.2. Statements](#152-statements)
@@ -354,6 +356,8 @@ todosCount; // might have changed;
 
 ### 1.4. Truthy and Falsy
 
+#### 1.4.1. Whats Truthy and Falsy
+
 Let's consider the following JavaScript statement:
 
 ```js
@@ -367,6 +371,91 @@ if (user.name) {
 ```
 
 We have a user object, and we want to run a console.log depending on a condition. The condition is the JavaScript expression `user.name`.
+
+But `user.name` isn't a boolean value. The user's name is neither `true` nor `false`.
+
+Q. How above program still valid and works?
+
+A. **In JavaScript, every value is either "truthy" or "falsy".** A truthy value is one that counts as true when it comes to conditions.
+
+Most values in JavaScript are truthy. But only few are falsy, so, list all of the falsy values:
+
+```js
+false
+null
+undefined
+'' (empty string)
+0 (and related values, like 0.0 and -0)
+NaN
+```
+
+`user.name` is a truthy value, because it's a string with at least 1 character. Every string other than `''` is truthy.
+
+> Note: `[]` (empty array) and `{}` (empty object) are truthy values, not falsy. This means that every object/array is truthy.
+
+#### 1.4.2. 
+
+Sometimes, we need convert truthy value into `true`, or a falsy value into `false`.
+
+How to achieve it?
+
+Using `Boolean()` constructor function,
+
+```js
+Boolean(4); // true
+Boolean(0); // false
+Boolean([]); // true
+Boolean(""); // false
+Boolean("Avinash"); // true
+```
+
+Another way,
+
+```js
+!!4; // true
+!!0; // false
+!![]; // true
+!!""; // false
+!!"Avinash"; // true
+```
+
+`!!` isn't actually a JavaScript operator; we're repeating the NOT operator (`!`) twice.
+
+Ex,
+
+```js
+!true; // false
+!false; // true
+```
+
+If we use the `!` with a non-boolean value, it will flip a truthy value to `false`, or a falsy value to `true`:
+
+```js
+!4; // false, since 4 is truthy
+!0; // true, since 0 is falsy
+```
+
+We can stack multiple `!` operators to flip it back and forth:
+
+```js
+!4; // false
+!!4; // true
+!!!4; // false
+!!!!4; // true
+```
+
+To break down what's going on here: Each `!` is evaluated, one at a time. It's as if there were parenthesis around each set, like this:
+
+```js
+!(!(!4))
+    ^^ !4 resolves to `false`
+
+!(!false)
+  ^^^^^^ !false resolves to `true`
+
+!true
+^^^^^ !true resolves to `false`
+```
 
 ### 1.5. Statements vs. Expressions
 
